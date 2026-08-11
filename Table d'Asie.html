@@ -1,0 +1,915 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Table d'Asie — Traiteur asiatique à Juan-les-Pins | Sur place & à emporter</title>
+<meta name="description" content="Table d'Asie, traiteur asiatique familial à Juan-les-Pins depuis 2011. Cuisine du Cambodge, Vietnam, Chine et Thaïlande, faite maison chaque jour. Nems, bo bun, canard laqué, menus midi & soir. Sur place ou à emporter — 132 Bd du Président Wilson." />
+<meta name="keywords" content="Table d'Asie, traiteur asiatique Juan-les-Pins, restaurant asiatique Antibes, nems, bo bun, canard laqué, cuisine vietnamienne, cuisine thaïlandaise, à emporter Juan-les-Pins" />
+<meta name="robots" content="index, follow" />
+<meta name="author" content="Table d'Asie" />
+<!-- ⬇️ Remplace l'URL ci-dessous par l'adresse réelle de ton site une fois déployé -->
+<link rel="canonical" href="https://table-dasie.vercel.app/" />
+<link rel="icon" type="image/png" href="images/r/logo-badge.png" />
+<link rel="apple-touch-icon" href="images/r/logo-badge.png" />
+<!-- Open Graph (Facebook, WhatsApp, etc.) -->
+<meta property="og:type" content="restaurant" />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:site_name" content="Table d'Asie" />
+<meta property="og:title" content="Table d'Asie — Traiteur asiatique à Juan-les-Pins" />
+<meta property="og:description" content="Cuisine familiale du Cambodge, Vietnam, Chine et Thaïlande, faite maison depuis 2011. Sur place ou à emporter à Juan-les-Pins." />
+<meta property="og:url" content="https://table-dasie.vercel.app/" />
+<meta property="og:image" content="images/r/logo-badge.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Table d'Asie — Traiteur asiatique à Juan-les-Pins" />
+<meta name="twitter:description" content="Cuisine familiale asiatique faite maison depuis 2011. Sur place ou à emporter à Juan-les-Pins." />
+<meta name="twitter:image" content="images/r/logo-badge.png" />
+<!-- Données structurées Google : aide Google à reconnaître le restaurant -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Table d'Asie",
+  "description": "Traiteur asiatique familial à Juan-les-Pins depuis 2011 — cuisine du Cambodge, du Vietnam, de Chine et de Thaïlande, faite maison chaque jour.",
+  "image": "https://table-dasie.vercel.app/images/r/logo-badge.png",
+  "url": "https://table-dasie.vercel.app/",
+  "logo": "https://table-dasie.vercel.app/images/r/logo-badge.png",
+  "telephone": "+33988418678",
+  "priceRange": "€",
+  "servesCuisine": ["Asiatique", "Cambodgienne", "Vietnamienne", "Chinoise", "Thaïlandaise"],
+  "acceptsReservations": "False",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "132 Boulevard du Président Wilson",
+    "addressLocality": "Juan-les-Pins",
+    "postalCode": "06160",
+    "addressRegion": "Provence-Alpes-Côte d'Azur",
+    "addressCountry": "FR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 43.5685,
+    "longitude": 7.1075
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    "opens": "10:30",
+    "closes": "22:00"
+  }, {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": "Sunday",
+    "opens": "10:30",
+    "closes": "21:00"
+  }],
+  "hasMenu": "https://table-dasie.vercel.app/",
+  "foundingDate": "2011"
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&family=Ma+Shan+Zheng&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  :root{
+    --paper:#f4ead0; --paper-2:#ecdfb6; --ink:#2a1a10; --ink-soft:#5a3e2b;
+    --red:#b21e15; --red-deep:#7c1410; --gold:#c39126; --gold-soft:#e0b048;
+    --jade:#2f6b46; --muted:#8a7256;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    text-rendering:optimizeLegibility; line-height:1.55;
+    background-image:
+      radial-gradient(rgba(90,62,43,.035) 1px, transparent 1.5px),
+      linear-gradient(180deg,#f6efd6,#ede1be);
+    background-size:11px 11px,100% 100%;
+  }
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+  .serif{font-family:'Cormorant Garamond',serif}
+  .brush{font-family:'Ma Shan Zheng',cursive}
+  .small{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase}
+  ::selection{background:var(--red);color:var(--paper)}
+  .orn{display:flex;align-items:center;gap:14px;color:var(--red)}
+  .orn::before,.orn::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--red) 20%,var(--red) 80%,transparent);opacity:.55}
+  .stamp{display:inline-flex;align-items:center;justify-content:center;width:78px;height:78px;background:var(--red);color:var(--paper);font-family:'Ma Shan Zheng',cursive;font-size:42px;line-height:1;transform:rotate(-5deg);padding-top:6px;box-shadow:0 2px 0 rgba(0,0,0,.18),inset 0 0 0 3px var(--red);border:3px solid var(--red);outline:1px solid var(--red);outline-offset:3px}
+  @keyframes sway{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
+  .lantern{animation:sway 6s ease-in-out infinite;transform-origin:top center}
+  .price{font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--red);white-space:nowrap;font-variant-numeric:tabular-nums lining-nums}
+  .paper-card{
+    background:var(--paper);
+    background-image:radial-gradient(rgba(90,62,43,.06) 1px,transparent 1.1px),radial-gradient(rgba(160,36,26,.04) 1px,transparent 1px);
+    background-size:8px 8px,14px 14px;
+    background-position:0 0,4px 6px;
+  }
+  .thumb{transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+  .thumb:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 14px 30px -16px rgba(0,0,0,.4)}
+  .tab{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 14px;border-bottom:2px solid transparent;color:var(--ink);transition:.2s;min-width:90px}
+  .tab.active{border-bottom-color:var(--red);color:var(--red)}
+  .tab .zh{font-family:'Ma Shan Zheng',cursive;font-size:22px;color:var(--red);line-height:1}
+  .tab .fr{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px}
+  @keyframes scrollX{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .marquee{display:flex;width:max-content;animation:scrollX 40s linear infinite}
+  .awning{position:relative;height:14px;background:repeating-linear-gradient(90deg,var(--red) 0 26px,var(--red-deep) 26px 52px);box-shadow:inset 0 -3px 7px rgba(0,0,0,.16)}
+  .awning::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold) 12%,var(--gold-soft) 50%,var(--gold) 88%,transparent);opacity:.7}
+  .filter-chip{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--ink-soft);border:1px solid transparent;background:transparent;transition:all .2s;cursor:pointer}
+  .filter-chip:hover{color:var(--red)}
+  .filter-chip.active{color:var(--red);border-color:var(--red);background:rgba(160,36,26,.05)}
+  .filter-chip .zh{font-family:'Ma Shan Zheng',cursive;color:var(--red);font-size:18px}
+  .tag-halal,.tag-gf,.tag-vege{font-size:9px;font-weight:700;letter-spacing:.14em;padding:3px 7px;text-transform:uppercase;line-height:1.35;display:inline-block;border-radius:2px}
+  .tag-halal{background:var(--jade);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+  .tag-gf{background:var(--gold);color:var(--ink);box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+  .tag-vege{background:#6a8a3a;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+  .sep{display:flex;align-items:center;justify-content:center;gap:16px}
+  .sep::before,.sep::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(160,36,26,.32),transparent)}
+  .sep i{flex:0 0 auto;width:7px;height:7px;border:1px solid var(--red);transform:rotate(45deg);opacity:.7}
+  /* Accessibilité clavier : anneau de focus visible sur les éléments interactifs */
+  a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+  /* Respect de la préférence « animations réduites » */
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+    .lantern{animation:none!important}
+    .marquee{animation:none!important}
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" data-presets="react">
+
+
+
+const { useState, useEffect, useMemo, useRef } = React;
+
+/* ============ DONNÉES ============ */
+const CATS = [
+{ id: 'entrees', fr: 'Entrées', sub: 'à la pièce', zh: '前菜', icon: '◉' },
+{ id: 'salades', fr: 'Salades', sub: 'la portion', zh: '沙拉', icon: '❀' },
+{ id: 'plats', fr: 'Plats chauds', sub: 'la portion', zh: '热菜', icon: '◈' },
+{ id: 'accompagnements', fr: 'Accompagnements', sub: 'la portion', zh: '配菜', icon: '≋' },
+{ id: 'desserts', fr: 'Desserts', sub: 'à la pièce ou à la portion', zh: '甜点', icon: '✿' },
+{ id: 'boissons', fr: 'Boissons', sub: 'sodas · jus · eaux', zh: '饮料', icon: '☕' },
+{ id: 'alcools', fr: 'Vins & alcools', sub: 'bières · vins · alcool de riz', zh: '酒水', icon: '⚱' }];
+
+
+// halal: SEUL le poulet est halal
+const MENU = [
+// ===== Entrées =====
+{ id: 100, cat: 'entrees', name: "Gyoza", desc: "Ravioli japonais poêlé — porc, chou chinois, ciboule", price: 1.20, unit: 'pièce' },
+{ id: 101, cat: 'entrees', name: "Siu mai crevette", desc: "Ravioli vapeur — crevette, bambou, féculents, coriandre", price: 1.20, unit: 'pièce' },
+{ id: 102, cat: 'entrees', name: "Hakao crevette", desc: "Ravioli vapeur translucide — crevette, bambou, féculents", price: 1.20, unit: 'pièce' },
+{ id: 103, cat: 'entrees', name: "Petit nem poulet", desc: "Poulet, vermicelles soja, champignons noirs, oignon, carotte, pousses de soja", price: 1.40, unit: 'pièce', halal: true, img: 'images/r/compressed/nems-1.jpg' },
+{ id: 104, cat: 'entrees', name: "Petit nem porc", desc: "Porc, vermicelles soja, champignons noirs, oignon, carotte, pousses de soja", price: 1.40, unit: 'pièce', img: 'images/r/compressed/nems-2.jpg' },
+{ id: 105, cat: 'entrees', name: "Ravioli frit", desc: "Ravioli frit croustillant — porc, légumes", price: 1.40, unit: 'pièce' },
+{ id: 106, cat: 'entrees', name: "Pince de crabe", desc: "Pince de crabe farcie, panée et frite minute", price: 1.40, unit: 'pièce' },
+{ id: 107, cat: 'entrees', name: "Accra de crabe", desc: "Chair de crabe, petits pois, oignon, carotte, lait, farine de blé", price: 1.50, unit: 'pièce' },
+{ id: 108, cat: 'entrees', name: "Crevette panée", desc: "Crevette enrobée d'une pâte croquante, frite minute", price: 1.50, unit: 'pièce' },
+{ id: 109, cat: 'entrees', name: "Beignet de crevette", desc: "Crevette, farine de blé et de riz, fécule de pomme de terre", price: 1.50, unit: 'pièce' },
+{ id: 110, cat: 'entrees', name: "Nem légumes", desc: "Feuille de brick, chou blanc, champignons noirs, carotte, vermicelles, pousses de soja", price: 1.90, unit: 'pièce', veg: true, img: 'images/r/compressed/nems-4.jpg' },
+{ id: 111, cat: 'entrees', name: "Nem crevette", desc: "Galette de riz, crevette, poulet, champignons noirs, vermicelles, pousses de soja", price: 1.90, unit: 'pièce', img: 'images/r/compressed/nems-3.jpg' },
+{ id: 112, cat: 'entrees', name: "Samoussa bœuf", desc: "Feuille de brick, bœuf, petits pois, pomme de terre, curry", price: 2.20, unit: 'pièce' },
+{ id: 113, cat: 'entrees', name: "Samoussa poulet", desc: "Feuille de brick, poulet, petits pois, pomme de terre, curry", price: 2.20, unit: 'pièce', halal: true },
+{ id: 114, cat: 'entrees', name: "Rouleau de printemps", desc: "Galette de riz, crevette, vermicelles, salade, menthe, coriandre, ciboulette", price: 3.20, unit: 'pièce', gf: true, img: 'images/r/compressed/rouleaux.jpg' },
+{ id: 115, cat: 'entrees', name: "Banh bao", desc: "Brioche vapeur farcie au porc, chou blanc, ciboulette, échalote", price: 3.90, unit: 'pièce' },
+{ id: 116, cat: 'entrees', name: "Yakitori poulet", desc: "Brochettes de poulet marinées, sauce soja-caramel, grillées", price: 4.20, unit: '4 pièces', halal: true, img: 'images/r/compressed/yakitori.jpg' },
+{ id: 117, cat: 'entrees', name: "Crabe farci", desc: "Carapace farcie au crabe, porc, crevette, vermicelles, fécule", price: 5.90, unit: 'pièce' },
+{ id: 118, cat: 'entrees', name: "Brochette poulet citronnelle", desc: "Poulet mariné citronnelle, feuilles de citron, curcuma, ail", price: 6.30, unit: 'pièce', halal: true, gf: true },
+
+// ===== Salades =====
+{ id: 200, cat: 'salades', name: "Salade composée", desc: "Carotte, chou blanc, poivron, oignon blanc, sauce vinaigrette", price: 5.00, unit: 'portion', veg: true },
+{ id: 201, cat: 'salades', name: "Salade poulet", desc: "Pousses de soja, salade, carotte, concombre, tomate, poulet, vinaigrette", price: 5.90, unit: 'portion', halal: true },
+{ id: 202, cat: 'salades', name: "Salade crevette", desc: "Pousses de soja, salade, carotte, concombre, tomate, crevette, vinaigrette", price: 6.50, unit: 'portion' },
+
+// ===== Plats chauds =====
+{ id: 300, cat: 'plats', name: "Poulet aux champignons noirs", desc: "Poulet sauté, champignons noirs, pousses de bambou, petits pois", price: 6.90, unit: 'portion', halal: true, img: 'images/r/compressed/poulet-champignons.jpg' },
+{ id: 301, cat: 'plats', name: "Poulet piquant", desc: "Poulet sauté, cacahuète, poivron, carotte, bambou, céleri, oignon", price: 6.90, unit: 'portion', halal: true, hot: 2 },
+{ id: 302, cat: 'plats', name: "Poulet caramel", desc: "Poulet mijoté au caramel, carotte, pousses de bambou", price: 6.90, unit: 'portion', halal: true },
+{ id: 303, cat: 'plats', name: "Porc caramel", desc: "Porc mijoté au caramel, carotte, pousses de bambou", price: 6.90, unit: 'portion' },
+{ id: 304, cat: 'plats', name: "Poulet curry à la citronnelle", desc: "Poulet, curry, citronnelle, poivron, oignon, bambou, carotte, courgette", price: 6.90, unit: 'portion', halal: true },
+{ id: 305, cat: 'plats', name: "Poulet Général Tao", desc: "Émincé de poulet pané et frit, sauce aigre-piquante, poivron, oignon, coriandre", price: 7.90, unit: 'portion', halal: true, signature: true, img: 'images/r/compressed/regal-poulet.jpg' },
+{ id: 306, cat: 'plats', name: "Bœuf basilic piquant", desc: "Bœuf sauté, basilic thaï, piment, bambou, petits pois, oignon, carotte, courgette", price: 7.90, unit: 'portion', hot: 2, img: 'images/r/compressed/boeuf-piquant.jpg' },
+{ id: 307, cat: 'plats', name: "Bœuf aux champignons noirs", desc: "Bœuf sauté, champignons noirs, pousses de bambou", price: 7.90, unit: 'portion' },
+{ id: 308, cat: 'plats', name: "Bœuf aux oignons", desc: "Bœuf sauté au wok, oignons doux, gingembre, sauce d'huître", price: 7.90, unit: 'portion', img: 'images/r/compressed/boeuf-oignons.jpg' },
+{ id: 309, cat: 'plats', name: "Bo bun bœuf", desc: "Bœuf sauté à la citronnelle, vermicelles de riz, carotte, concombre, herbes fraîches", price: 8.50, unit: 'portion', gf: true, img: 'images/r/compressed/bo-bun.jpg' },
+{ id: 310, cat: 'plats', name: "Bo bun bœuf & 2 petits nems", desc: "Notre Bo bun classique avec deux petits nems croustillants", price: 10.50, unit: 'portion' },
+{ id: 311, cat: 'plats', name: "Poisson aigre-doux", desc: "Filet de poisson pané, sauce aigre-douce, ananas, poivron, oignon", price: 8.50, unit: 'portion' },
+{ id: 312, cat: 'plats', name: "Crevette piquante", desc: "Crevettes sautées, poivron, oignon, carotte, bambou, petits pois", price: 8.50, unit: 'portion', hot: 2, gf: true, img: 'images/r/compressed/crevettes-piquantes.jpg' },
+{ id: 313, cat: 'plats', name: "Crevette curry à la citronnelle", desc: "Crevettes mijotées au curry, citronnelle, poivron, bambou, carotte, courgette", price: 8.50, unit: 'portion', gf: true, img: 'images/r/compressed/crevettes-curry.jpg' },
+{ id: 314, cat: 'plats', name: "Canard laqué", desc: "Canard laqué, salade, concombre, pousses de soja, coriandre", price: 8.50, unit: 'portion', signature: true },
+
+// ===== Accompagnements =====
+{ id: 400, cat: 'accompagnements', name: "Riz blanc", desc: "Riz thaï parfumé, cuit vapeur", price: 2.50, unit: 'portion', veg: true, gf: true },
+{ id: 401, cat: 'accompagnements', name: "Riz cantonais", desc: "Riz sauté, œufs, petits pois, jambon, cébette", price: 4.20, unit: 'portion', img: 'images/r/compressed/riz-cantonais.jpg' },
+{ id: 402, cat: 'accompagnements', name: "Riz thaï piquant", desc: "Riz sauté, œufs, cébette, poulet laqué, sauce piment", price: 4.20, unit: 'portion', halal: true, hot: 1 },
+{ id: 403, cat: 'accompagnements', name: "Riz Singapour", desc: "Riz sauté, carotte, maïs, petits pois, oignon frit, crevettes", price: 4.20, unit: 'portion' },
+{ id: 404, cat: 'accompagnements', name: "Pâtes de riz sautées", desc: "Tagliatelles de riz sautées au chou blanc", price: 4.90, unit: 'portion', veg: true, img: 'images/r/compressed/pates-riz.jpg' },
+{ id: 405, cat: 'accompagnements', name: "Nouilles sautées", desc: "Nouilles aux œufs sautées, pousses de soja, cébette", price: 4.90, unit: 'portion', veg: true, img: 'images/r/compressed/nouilles-sautees.jpg' },
+{ id: 406, cat: 'accompagnements', name: "Vermicelles sautés", desc: "Vermicelles de soja sautés aux légumes", price: 4.90, unit: 'portion', veg: true },
+{ id: 407, cat: 'accompagnements', name: "Vermicelles au poulet", desc: "Vermicelles de soja, champignons noirs, poulet, petits pois", price: 5.90, unit: 'portion', halal: true },
+{ id: 408, cat: 'accompagnements', name: "Légumes sautés", desc: "Poivron, carotte, oignon, courgette, céleri, brocoli, bambou", price: 5.90, unit: 'portion', veg: true, gf: true, img: 'images/r/compressed/legumes.jpg' },
+
+// ===== Desserts =====
+{ id: 500, cat: 'desserts', name: "Banane au lait de coco", desc: "Banane mijotée dans lait de coco sucré, sagou, vanille", price: 3.50, unit: 'portion', veg: true, gf: true },
+{ id: 501, cat: 'desserts', name: "Boule de neige", desc: "Boules de riz gluant, noix de coco râpée, cœur fondant", price: 3.50, unit: 'portion', veg: true },
+{ id: 502, cat: 'desserts', name: "Salade de fruits", desc: "Fruits frais de saison, sirop léger", price: 3.90, unit: 'portion', veg: true, gf: true },
+{ id: 503, cat: 'desserts', name: "Nougat mou", desc: "Nougat tendre — cacahuète, sésame", price: 2.50, unit: 'portion', veg: true },
+{ id: 504, cat: 'desserts', name: "Nougat dur", desc: "Nougat croquant — cacahuète, sésame", price: 2.50, unit: 'portion', veg: true },
+{ id: 505, cat: 'desserts', name: "Coco confit", desc: "Lamelles de noix de coco confites", price: 3.50, unit: 'portion', veg: true, gf: true },
+{ id: 506, cat: 'desserts', name: "Gingembre confit", desc: "Lamelles de gingembre confites", price: 3.50, unit: 'portion', veg: true, gf: true },
+{ id: 507, cat: 'desserts', name: "Kumquats confits", desc: "Petits agrumes confits, doux et parfumés", price: 3.50, unit: 'portion', veg: true, gf: true },
+{ id: 508, cat: 'desserts', name: "Assortiment de douceurs", desc: "Mélange de gâteaux et confiseries maison", price: 3.50, unit: 'portion', veg: true },
+{ id: 509, cat: 'desserts', name: "Gâteau pâte de soja", desc: "Pâtisserie traditionnelle à base de pâte de soja", price: 2.00, unit: 'pièce', alt: '3,50 € / 2 pces', veg: true },
+{ id: 510, cat: 'desserts', name: "Gâteau à la noix de coco", desc: "Pâtisserie traditionnelle à la noix de coco", price: 2.00, unit: 'pièce', alt: '3,50 € / 2 pces', veg: true },
+{ id: 511, cat: 'desserts', name: "Rouleau de gâteau soja", desc: "Rouleau de pâtisserie au soja, à partager", price: 6.50, unit: 'rouleau de 4', veg: true },
+{ id: 512, cat: 'desserts', name: "Rouleau de gâteau coco", desc: "Rouleau de pâtisserie à la noix de coco, à partager", price: 7.50, unit: 'rouleau de 5', veg: true },
+{ id: 513, cat: 'desserts', name: "Lychee au sirop", desc: "Litchis servis bien frais dans leur sirop léger", price: 2.50, unit: 'portion', veg: true, gf: true },
+{ id: 514, cat: 'desserts', name: "Biscuit porte-bonheur", desc: "Biscuit croustillant renfermant un petit message", price: 0.50, unit: 'pièce', veg: true },
+
+// ===== Boissons =====
+{ id: 600, cat: 'boissons', name: "Eau Cristaline", desc: "Eau plate, 50 cl", price: 2.00, unit: 'bouteille', veg: true, gf: true },
+{ id: 601, cat: 'boissons', name: "Eau pétillante San Pellegrino", desc: "Eau gazeuse italienne, 50 cl", price: 2.50, unit: 'bouteille', veg: true, gf: true },
+{ id: 602, cat: 'boissons', name: "Coca-Cola", price: 2.50, unit: '33 cl', veg: true, gf: true },
+{ id: 603, cat: 'boissons', name: "Coca-Cola Cerise", price: 2.50, unit: '33 cl', veg: true, gf: true },
+{ id: 604, cat: 'boissons', name: "Coca-Cola Zéro", price: 2.50, unit: '33 cl', veg: true, gf: true },
+{ id: 605, cat: 'boissons', name: "Ice Tea Lipton", price: 2.50, unit: '33 cl', veg: true, gf: true },
+{ id: 606, cat: 'boissons', name: "Ice Tea Liptonic", price: 2.50, unit: '33 cl', veg: true, gf: true },
+{ id: 607, cat: 'boissons', name: "Fanta Orange", price: 2.50, unit: '33 cl', veg: true, gf: true },
+{ id: 608, cat: 'boissons', name: "Oasis Tropical", price: 2.50, unit: '33 cl', veg: true, gf: true },
+{ id: 609, cat: 'boissons', name: "Orangina", price: 2.50, unit: '33 cl', veg: true, gf: true },
+{ id: 610, cat: 'boissons', name: "Sprite", price: 2.50, unit: '33 cl', veg: true, gf: true },
+{ id: 611, cat: 'boissons', name: "Jus de lychee", price: 2.90, unit: 'verre', veg: true, gf: true },
+{ id: 612, cat: 'boissons', name: "Jus de mangue", price: 2.90, unit: 'verre', veg: true, gf: true },
+{ id: 613, cat: 'boissons', name: "Jus de goyave", price: 2.90, unit: 'verre', veg: true, gf: true },
+{ id: 614, cat: 'boissons', name: "Jus de passion", price: 2.90, unit: 'verre', veg: true, gf: true },
+{ id: 615, cat: 'boissons', name: "Jus d'ananas", price: 2.90, unit: 'verre', veg: true, gf: true },
+{ id: 616, cat: 'boissons', name: "Jus de coco", price: 2.90, unit: 'verre', veg: true, gf: true },
+{ id: 617, cat: 'boissons', name: "Lait de soja", price: 2.90, unit: 'verre', veg: true, gf: true },
+
+// ===== Vins & alcools =====
+{ id: 700, cat: 'alcools', name: "Bière Heineken", desc: "Pils blonde, 33 cl", price: 2.90, unit: 'bouteille' },
+{ id: 702, cat: 'alcools', name: "Bière Tsingtao", desc: "Blonde chinoise, 33 cl", price: 3.50, unit: 'bouteille' },
+{ id: 703, cat: 'alcools', name: "Vin Ventoux Rouge", desc: "Côtes-du-Ventoux — bouteille 75 cl", price: 14.00, unit: '75 cl', alt: '8,90 € / 37,5 cl' },
+{ id: 704, cat: 'alcools', name: "Vin Ventoux Rosé", desc: "Côtes-du-Ventoux — bouteille 75 cl", price: 14.00, unit: '75 cl', alt: '8,90 € / 37,5 cl' },
+{ id: 705, cat: 'alcools', name: "Vin en carafe", desc: "Rouge ou rosé — carafe maison", price: 2.90, unit: '1/4' },
+{ id: 706, cat: 'alcools', name: "Alcool de riz chinois", desc: "Eau-de-vie de riz chinoise, servie en petite bouteille", price: 4.50, unit: 'petite bouteille' }];
+
+
+const MENUS = [
+{ id: 'express', title: "Menu Express", zh: '快速套餐', price: 12.00, desc: "La formule rapide pour le midi.", lines: [
+  { label: "3 petits nems — porc ou poulet", filter: (m) => m.cat === 'entrees' && /petit nem/i.test(m.name) },
+  { label: "1 plat à 6,90 € au choix", filter: (m) => m.cat === 'plats' && m.price === 6.90 },
+  { label: "1 riz blanc" }],
+  when: "midi · à emporter ou sur place" },
+{ id: 'classique', title: "Menu Classique", zh: '经典套餐', price: 15.50, desc: "L'équilibre maison.", lines: [
+  { label: "3 petits nems — porc ou poulet", filter: (m) => m.cat === 'entrees' && /petit nem/i.test(m.name) },
+  { label: "1 plat poulet ou porc à 6,90 €", filter: (m) => m.cat === 'plats' && m.price === 6.90 },
+  { label: "1 riz cantonais" },
+  { label: "1 soda au choix", items: ["Coca-Cola", "Coca Zéro", "Coca Cerise", "Sprite", "Fanta", "Orangina", "Oasis Tropical", "Ice Tea Lipton", "Ice Tea Liptonic"] }],
+  when: "midi & soir" },
+{ id: 'maison', title: "Menu Maison", zh: '家常套餐', price: 16.50, desc: "Le menu familial qui contente tout le monde.", lines: [
+  { label: "3 petits nems — porc ou poulet", filter: (m) => m.cat === 'entrees' && /petit nem/i.test(m.name) },
+  { label: "1 plat à 7,90 € au choix", filter: (m) => m.cat === 'plats' && m.price === 7.90 },
+  { label: "1 riz au choix", filter: (m) => m.cat === 'accompagnements' && /^riz/i.test(m.name) },
+  { label: "1 soda au choix", items: ["Coca-Cola", "Coca Zéro", "Coca Cerise", "Sprite", "Fanta", "Orangina", "Oasis Tropical", "Ice Tea Lipton", "Ice Tea Liptonic"] }],
+  when: "midi & soir" },
+{ id: 'chef', title: "Menu du Chef", zh: '主厨套餐', price: 18.00, desc: "Le préféré de la maison — composé par le chef.", lines: [
+  { label: "3 petits nems — porc ou poulet", filter: (m) => m.cat === 'entrees' && /petit nem/i.test(m.name) },
+  { label: "1 riz au choix", filter: (m) => m.cat === 'accompagnements' && /^riz/i.test(m.name) },
+  { label: "1 plat au choix", filter: (m) => m.cat === 'plats' && !/bo bun|canard/i.test(m.name) },
+  { label: "1 boisson au choix — n'importe quelle boisson de la carte" }],
+  when: "midi & soir", best: true }];
+
+
+const FILTERS = [
+{ id: 'all', label: 'Tout voir', zh: null },
+{ id: 'halal', label: 'Halal', zh: 'حلال' },
+{ id: 'gf', label: 'Sans gluten', zh: null },
+{ id: 'veg', label: 'Végétarien', zh: '素' }];
+
+
+/* ============ DECORATIVE ============ */
+function Lantern({ delay = 0, size = 70 }) {
+  return (
+    <div className="lantern" style={{ animationDelay: delay + 's', display: 'inline-block' }}>
+      <div style={{ width: 1, height: 24, background: 'rgba(0,0,0,.5)', margin: '0 auto' }} />
+      <div style={{ width: 2, height: 5, background: 'var(--gold)', margin: '0 auto' }} />
+      <div style={{
+        width: size, height: size * 1.18, borderRadius: '50% / 45%',
+        background: 'radial-gradient(circle at 35% 28%, #d63a2c, var(--red) 55%, var(--red-deep))',
+        border: '2px solid var(--red-deep)', position: 'relative',
+        boxShadow: 'inset 0 -8px 18px rgba(0,0,0,.35),0 6px 18px rgba(160,36,26,.45)'
+      }}>
+        <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Ma Shan Zheng,cursive', fontSize: size * 0.42, color: 'var(--gold-soft)' }}>福</div>
+        {[0, 1, 2, 3].map((i) => <div key={i} style={{ position: 'absolute', left: 0, right: 0, top: size * 0.22 + i * (size * 0.16), height: 1, background: 'rgba(0,0,0,.22)' }} />)}
+        <div style={{ position: 'absolute', top: -3, left: 6, right: 6, height: 5, background: 'var(--gold)', borderRadius: 2 }} />
+        <div style={{ position: 'absolute', bottom: -3, left: 6, right: 6, height: 5, background: 'var(--gold)', borderRadius: 2 }} />
+      </div>
+      <div style={{ width: 14, height: 14, margin: '2px auto 0', background: 'var(--gold)', clipPath: 'polygon(50% 0,100% 50%,50% 100%,0 50%)' }} />
+      <div style={{ width: 1, height: 24, margin: '-1px auto 0', background: 'linear-gradient(180deg,var(--gold-soft),transparent)' }} />
+    </div>);
+
+}
+
+function Divider({ label, sub }) {
+  return (
+    <div style={{ textAlign: 'center', margin: '10px auto' }}>
+      <div className="orn" style={{ maxWidth: 480, margin: '0 auto', gap: 18 }}>
+        <span style={{ display: 'inline-block', width: 6, height: 6, border: '1px solid var(--red)', transform: 'rotate(45deg)', opacity: .75 }} />
+        {label && <span className="brush" style={{ fontSize: 24, color: 'var(--red)' }}>{label}</span>}
+        <span style={{ display: 'inline-block', width: 6, height: 6, border: '1px solid var(--red)', transform: 'rotate(45deg)', opacity: .75 }} />
+      </div>
+      {sub && <div className="small" style={{ color: 'var(--muted)', marginTop: 8 }}>{sub}</div>}
+    </div>);
+
+}
+
+function Sep() {
+  return <div className="sep" style={{ maxWidth: 1040, margin: '6px auto', padding: '0 24px' }}><i></i></div>;
+}
+
+function SpiceDots({ level }) {
+  if (!level) return null;
+  return <span style={{ color: 'var(--red)', letterSpacing: '2px', fontSize: 11 }} title={`Épicé ×${level}`}>{"◆".repeat(level)}</span>;
+}
+
+function PriceTag({ price, unit, alt, big }) {
+  if (price == null) return <span className="price" style={{ fontStyle: 'italic', color: 'var(--muted)', fontSize: big ? 20 : 15 }}>nous consulter</span>;
+  return (
+    <span style={{ display: 'inline-flex', alignItems: 'baseline', gap: 6, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+      <span className="price" style={{ fontSize: big ? 28 : 20 }}>{price.toFixed(2).replace('.', ',')} €</span>
+      <span style={{ fontSize: 11, color: 'var(--muted)', letterSpacing: '.08em' }}>/ {unit}</span>
+      {alt && <span style={{ fontSize: 11, color: 'var(--muted)', fontStyle: 'italic' }}>· {alt}</span>}
+    </span>);
+
+}
+
+/* ============ HEADER ============ */
+function Header() {
+  return (
+    <header style={{ position: 'relative', overflow: 'hidden' }}>
+      <div style={{ background: 'var(--red-deep)', color: 'var(--gold-soft)', padding: '10px 0', overflow: 'hidden', borderBottom: '1px solid rgba(227,176,72,.25)' }}>
+        <div className="marquee">
+          {Array.from({ length: 2 }).map((_, k) =>
+          <div key={k} style={{ display: 'flex', gap: 48, paddingRight: 48, fontFamily: 'Ma Shan Zheng,cursive', fontSize: 18, letterSpacing: '.25em', whiteSpace: 'nowrap' }}>
+              <span>欢 迎 光 临</span><span>·</span>
+              <span>BIENVENUE</span><span>·</span>
+              <span>SUR PLACE OU À EMPORTER</span><span>·</span>
+              <span>家 常 美 味</span><span>·</span>
+              <span>JUAN-LES-PINS</span><span>·</span>
+              <span>132 BD WILSON</span><span>·</span>
+            </div>
+          )}
+        </div>
+      </div>
+      <div className="awning" />
+      <div style={{ position: 'relative', width: '100%', height: 'min(64vh,520px)', overflow: 'hidden' }}>
+        <img src="images/r/compressed/interieur.jpg" alt="Vitrine Table d'Asie" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', filter: 'saturate(1.05)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(40,15,10,.55) 0%,rgba(40,15,10,.15) 35%,rgba(40,15,10,.65) 100%)' }} />
+        <div style={{ position: 'absolute', top: -2, left: 0, right: 0, display: 'flex', justifyContent: 'space-around', padding: '0 6vw', pointerEvents: 'none' }}>
+          <Lantern delay={0} size={64} />
+          <Lantern delay={-1.5} size={80} />
+          <Lantern delay={-2} size={76} />
+          <Lantern delay={-4} size={62} />
+        </div>
+        <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '0 24px', textAlign: 'center' }}>
+          <img src="images/r/logo-badge.png" alt="Table d'Asie - Asian Restaurant" style={{ display: 'block', width: 'min(340px,58vw)', height: 'auto', filter: 'drop-shadow(0 18px 40px rgba(0,0,0,.6))' }} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginTop: 30, color: '#fff', fontSize: 13, letterSpacing: '.25em', textTransform: 'uppercase', textShadow: '0 2px 10px rgba(0,0,0,.6)' }}>
+            <span style={{ height: 1, width: 30, background: 'var(--gold-soft)' }} />
+            Traiteur asiatique · depuis 2011
+            <span style={{ height: 1, width: 30, background: 'var(--gold-soft)' }} />
+          </div>
+          <p className="serif" style={{ fontSize: 'clamp(17px,1.6vw,22px)', fontStyle: 'italic', color: 'rgba(255,250,240,.95)', marginTop: 14, maxWidth: 620, lineHeight: 1.45, textShadow: '0 2px 10px rgba(0,0,0,.6)' }}>Cuisine familiale aux saveurs du Cambodge, du Vietnam, de Chine et de Thaïlande — préparée chaque jour, à deux pas de la pinède.
+
+          </p>
+        </div>
+      </div>
+      <div style={{ background: 'var(--paper-2)', borderBottom: '1px solid rgba(160,36,26,.25)', borderTop: '1px solid rgba(160,36,26,.25)' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto', padding: '14px 24px', display: 'flex', gap: 24, flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', fontSize: 13, color: 'var(--ink-soft)' }}>
+          <Chip icon="☎" text="09 88 41 86 78" />
+          <Chip icon="✿" text="132 Bd du Pdt Wilson, Juan-les-Pins" />
+          <Chip icon="◴" text="Ouvert 7/7 · même les jours fériés" />
+          <Chip icon="◈" text="Sur place et à emporter" />
+        </div>
+      </div>
+    </header>);
+
+}
+
+function Chip({ icon, text }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 9, fontFamily: 'Inter', fontSize: 13 }}>
+      <span style={{ color: 'var(--red)', fontSize: 15 }}>{icon}</span>{text}
+    </div>);
+
+}
+
+/* ============ FORMULES ============ */
+function Formules() {
+  const [idx, setIdx] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const total = MENUS.length;
+
+  // Auto-advance every 5s
+  useEffect(() => {
+    if (paused) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const t = setInterval(() => setIdx((i) => (i + 1) % total), 5000);
+    return () => clearInterval(t);
+  }, [paused, total]);
+
+  // Touch swipe
+  const touchX = useRef(null);
+  const onTouchStart = (e) => {touchX.current = e.touches[0].clientX;};
+  const onTouchEnd = (e) => {
+    if (touchX.current == null) return;
+    const dx = e.changedTouches[0].clientX - touchX.current;
+    if (Math.abs(dx) > 40) setIdx((i) => (i + (dx < 0 ? 1 : -1) + total) % total);
+    touchX.current = null;
+  };
+
+  const prev = () => setIdx((i) => (i - 1 + total) % total);
+  const next = () => setIdx((i) => (i + 1) % total);
+
+  return (
+    <section style={{ maxWidth: 1200, margin: '56px auto 0', padding: '30px 24px' }}>
+      <div style={{ textAlign: 'center', marginBottom: 34 }}>
+        <div className="brush" style={{ fontSize: 30, color: 'var(--red)', lineHeight: 1 }}>套 餐</div>
+        <h2 className="serif" style={{ fontSize: 'clamp(40px,5vw,56px)', margin: '4px 0 0', fontWeight: 500, fontStyle: 'italic' }}>Nos menus</h2>
+        <Divider sub="midi & soir · sur place ou à emporter" />
+      </div>
+
+      <div
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
+        style={{ position: 'relative', maxWidth: 760, margin: '0 auto', padding: '0 56px' }}>
+        
+        {/* Arrows */}
+        <button onClick={prev} aria-label="Menu précédent" style={arrowStyle('left')}>‹</button>
+        <button onClick={next} aria-label="Menu suivant" style={arrowStyle('right')}>›</button>
+
+        {/* Viewport */}
+        <div style={{ overflow: 'hidden', borderRadius: 0 }}>
+          <div style={{
+            display: 'flex',
+            transition: 'transform .6s cubic-bezier(.22,.61,.36,1)',
+            transform: `translateX(-${idx * 100}%)`
+          }}>
+            {MENUS.map((f) =>
+            <div key={f.id} style={{ flex: '0 0 100%', padding: '10px 14px 26px' }}>
+                <FormuleCard f={f} />
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Dots */}
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginTop: 6 }}>
+          {MENUS.map((m, i) =>
+          <button key={m.id} onClick={() => setIdx(i)} aria-label={`Aller au menu ${i + 1}`} style={{
+            width: idx === i ? 28 : 10, height: 10,
+            background: idx === i ? 'var(--red)' : 'rgba(160,36,26,.25)',
+            border: 0, borderRadius: 5, padding: 0,
+            transition: 'all .35s ease', cursor: 'pointer'
+          }} />
+          )}
+        </div>
+
+        {/* Counter */}
+        <div className="small" style={{ textAlign: 'center', color: 'var(--muted)', marginTop: 10 }}>
+          {String(idx + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+        </div>
+      </div>
+    </section>);
+
+}
+
+function arrowStyle(side) {
+  return {
+    position: 'absolute', top: '50%', transform: 'translateY(-50%)',
+    [side]: 0,
+    width: 44, height: 44, borderRadius: '50%',
+    background: 'var(--paper)', border: '1px solid rgba(160,36,26,.4)',
+    color: 'var(--red)', fontSize: 30, lineHeight: 1,
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    paddingBottom: 4,
+    boxShadow: '0 8px 20px -8px rgba(0,0,0,.3)',
+    zIndex: 3, cursor: 'pointer',
+    transition: 'background .2s, color .2s'
+  };
+}
+
+function resolveChoices(line) {
+  if (line.from) return MENU.filter((m) => m.cat === line.from);
+  if (line.filter) return MENU.filter(line.filter);
+  if (line.items) return line.items.map((s, i) => ({ id: 'item-' + i + '-' + s, name: s }));
+  return null;
+}
+
+function FormuleCard({ f }) {
+  const isBest = f.best;
+  const accent = isBest ? 'var(--gold-soft)' : 'var(--red)';
+  const ruleColor = isBest ? 'rgba(255,255,255,.18)' : 'rgba(160,36,26,.18)';
+  const subtle = isBest ? 'rgba(244,234,208,.78)' : 'var(--ink-soft)';
+  return (
+    <article className="paper-card" style={{ position: 'relative', background: isBest ? 'var(--red)' : 'var(--paper)', color: isBest ? 'var(--paper)' : 'var(--ink)', border: isBest ? '1px solid var(--red-deep)' : '1px solid rgba(160,36,26,.3)', boxShadow: '0 2px 0 rgba(0,0,0,.05),0 18px 40px -22px rgba(60,30,20,.3)', overflow: 'hidden', backgroundImage: isBest ? 'none' : undefined }}>
+      <div style={{ padding: '34px 30px 30px', position: 'relative', textAlign: 'center' }}>
+        <div className="brush" style={{ fontSize: 24, color: accent, lineHeight: 1, marginBottom: 4 }}>{f.zh}</div>
+        <h3 className="serif" style={{ fontSize: 32, margin: '0 0 4px', fontWeight: 500, fontStyle: 'italic' }}>{f.title}</h3>
+        <div className="serif" style={{ fontSize: 'clamp(36px,3vw,48px)', fontWeight: 600, margin: '12px 0 4px', color: accent }}>
+          {f.price.toFixed(2).replace('.', ',')} €
+        </div>
+        {f.desc && <div className="serif" style={{ fontStyle: 'italic', fontSize: 15, opacity: .85, marginBottom: 14, lineHeight: 1.4 }}>{f.desc}</div>}
+        <div style={{ height: 1, background: ruleColor, margin: '14px auto', width: 60 }} />
+        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: 14, fontSize: 14, lineHeight: 1.5, textAlign: 'left' }}>
+          {f.lines.map((l, i) => {
+            const choices = resolveChoices(l);
+            return (
+              <li key={i} style={{ display: 'grid', gap: 4 }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
+                  <span style={{ color: accent, fontSize: 11, lineHeight: 1, transform: 'translateY(-1px)' }}>◆</span>
+                  <span className="serif" style={{ fontSize: 17, fontStyle: 'italic', fontWeight: 600 }}>{l.label}</span>
+                </div>
+                {choices && choices.length > 0 &&
+                <div className="serif" style={{ fontStyle: 'italic', fontSize: 13.5, color: subtle, lineHeight: 1.55, paddingLeft: 19 }}>
+                    {choices.map((c, j) =>
+                  <span key={c.id}>
+                        {c.name}{j < choices.length - 1 && <span style={{ color: accent, opacity: .55, margin: '0 6px' }}>·</span>}
+                      </span>
+                  )}
+                  </div>
+                }
+              </li>);
+          })}
+        </ul>
+        <div className="small" style={{ opacity: .6, marginTop: 22, textAlign: 'center' }}>{f.when}</div>
+      </div>
+    </article>);
+
+}
+
+/* ============ LA CARTE ============ */
+function MenuCard({ onZoom }) {
+  const [activeCat, setActiveCat] = useState('entrees');
+  const [query, setQuery] = useState('');
+  const [filter, setFilter] = useState('all');
+  const refs = useRef({});
+
+  const filtered = useMemo(() => {
+    let xs = MENU;
+    if (filter === 'halal') xs = xs.filter((m) => m.halal);
+    if (filter === 'gf') xs = xs.filter((m) => m.gf);
+    if (filter === 'veg') xs = xs.filter((m) => m.veg);
+    if (query) {
+      const q = query.toLowerCase();
+      xs = xs.filter((m) => m.name.toLowerCase().includes(q));
+    }
+    return xs;
+  }, [filter, query]);
+
+  const grouped = useMemo(() => {
+    const g = {};CATS.forEach((c) => g[c.id] = filtered.filter((m) => m.cat === c.id));
+    return g;
+  }, [filtered]);
+
+  const scrollToCat = (id) => {
+    setActiveCat(id);
+    const el = refs.current[id];
+    if (!el) return;
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: el.offsetTop - 90, behavior: reduce ? 'auto' : 'smooth' });
+  };
+
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY + 120;
+      let cur = activeCat;
+      for (const c of CATS) {
+        const el = refs.current[c.id];
+        if (el && el.offsetTop <= y) cur = c.id;
+      }
+      if (cur !== activeCat) setActiveCat(cur);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [activeCat]);
+
+  return (
+    <section style={{ maxWidth: 1200, margin: '40px auto 0', padding: '40px 24px' }}>
+      <div style={{ textAlign: 'center', marginBottom: 30 }}>
+        <div className="brush" style={{ fontSize: 36, color: 'var(--red)', lineHeight: 1 }}>菜 单</div>
+        <h2 className="serif" style={{ fontSize: 'clamp(48px,6vw,72px)', margin: '4px 0 0', fontWeight: 500, fontStyle: 'italic' }}>La Carte</h2>
+        <Divider sub="prix par pièce ou par portion" />
+      </div>
+
+      {/* ===== Filtres régime alimentaire ===== */}
+      <div style={{ display: 'flex', gap: 6, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 18, paddingBottom: 18, borderBottom: '1px dashed rgba(160,36,26,.25)' }}>
+        <span className="small" style={{ color: 'var(--muted)', alignSelf: 'center', marginRight: 8 }}>Filtrer :</span>
+        {FILTERS.map((f) =>
+        <button key={f.id} className={'filter-chip' + (filter === f.id ? ' active' : '')} aria-pressed={filter === f.id} onClick={() => setFilter(f.id)}>
+            {f.zh && <span className="zh">{f.zh}</span>}
+            {f.label}
+          </button>
+        )}
+      </div>
+
+      {/* ===== Navigation par catégorie ===== */}
+      <div style={{ position: 'sticky', top: 0, zIndex: 10, background: 'var(--paper)', backgroundImage: 'linear-gradient(180deg,var(--paper) 80%,rgba(245,236,215,0))', borderBottom: '1px solid rgba(160,36,26,.25)', marginBottom: 32, padding: '10px 0' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: 6 }}>
+          {CATS.map((c) =>
+          <button key={c.id} className={'tab' + (activeCat === c.id ? ' active' : '')} aria-current={activeCat === c.id ? 'true' : undefined} onClick={() => scrollToCat(c.id)}>
+              <span className="zh">{c.zh}</span>
+              <span className="fr">{c.fr}</span>
+            </button>
+          )}
+          <div style={{ position: 'relative', marginLeft: 14, alignSelf: 'center' }}>
+            <input type="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="rechercher un plat…" aria-label="Rechercher un plat" style={{ background: 'transparent', border: '1px solid rgba(160,36,26,.3)', padding: '7px 14px 7px 30px', fontFamily: 'inherit', fontSize: 13, color: 'var(--ink)', outline: 'none', width: 200, borderRadius: 0 }} />
+            <span style={{ position: 'absolute', left: 10, top: 7, color: 'var(--red)' }}>⌕</span>
+          </div>
+        </div>
+      </div>
+
+      {CATS.map((c) => {
+        const items = grouped[c.id];
+        if (!items || items.length === 0) return null;
+        return (
+          <div key={c.id} ref={(el) => refs.current[c.id] = el} style={{ marginBottom: 54, scrollMarginTop: 120 }}>
+            <SectionHeader cat={c} />
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(360px,1fr))', gap: '22px 56px', marginTop: 24 }}>
+              {items.map((m) => <DishLine key={m.id} m={m} onZoom={onZoom} />)}
+            </div>
+          </div>);
+
+      })}
+
+      {filtered.length === 0 &&
+      <div style={{ textAlign: 'center', padding: '60px 20px', color: 'var(--muted)', fontStyle: 'italic', fontFamily: 'Cormorant Garamond,serif', fontSize: 18 }}>
+          Aucun plat ne correspond à ce filtre.
+        </div>
+      }
+
+      <FooterNote />
+    </section>);
+
+}
+
+function SectionHeader({ cat }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'flex-end', gap: 18, paddingBottom: 6, borderBottom: '2px solid var(--red)' }}>
+      <div style={{ flex: '0 0 auto', display: 'flex', alignItems: 'baseline', gap: 14 }}>
+        <span className="brush" style={{ fontSize: 46, color: 'var(--red)', lineHeight: 1 }}>{cat.zh}</span>
+        <h3 className="serif" style={{ fontSize: 34, margin: 0, fontWeight: 500, fontStyle: 'italic', color: 'var(--ink)' }}>{cat.fr}</h3>
+      </div>
+      <div style={{ flex: 1, paddingBottom: 8, borderBottom: '1px dashed rgba(160,36,26,.5)' }} />
+      <div className="small" style={{ color: 'var(--muted)', paddingBottom: 8 }}>{cat.sub}</div>
+    </div>);
+
+}
+
+function DishLine({ m, onZoom }) {
+  const [imgErr, setImgErr] = useState(false);
+  const hasImg = m.img && !imgErr;
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: '92px 1fr', gap: 16, alignItems: 'flex-start', padding: '4px 0' }}>
+      <button
+        className="thumb"
+        onClick={() => hasImg && onZoom && onZoom(m)}
+        disabled={!hasImg}
+        aria-label={hasImg ? `Agrandir la photo de ${m.name}` : undefined}
+        style={{
+          width: 92, height: 92, position: 'relative', overflow: 'hidden',
+          border: '1px solid rgba(160,36,26,.3)', background: 'var(--paper-2)',
+          boxShadow: '0 6px 14px -10px rgba(0,0,0,.4)',
+          padding: 0, cursor: hasImg ? 'zoom-in' : 'default'
+        }}>
+        {hasImg ?
+        <img src={m.img} alt={m.name} loading="lazy" decoding="async" onError={() => setImgErr(true)} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} /> :
+
+        <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'repeating-linear-gradient(45deg,rgba(160,36,26,.06) 0 2px,transparent 2px 10px)' }}>
+            <span style={{ fontSize: 30, color: 'rgba(160,36,26,.28)' }}>✿</span>
+          </div>
+        }
+        <div style={{ position: 'absolute', top: 0, left: 0, width: 0, height: 0, borderStyle: 'solid', borderWidth: '10px 10px 0 0', borderColor: 'var(--red) transparent transparent transparent', opacity: .7 }} />
+        {hasImg &&
+        <div style={{ position: 'absolute', bottom: 4, right: 4, width: 22, height: 22, background: 'rgba(43,26,18,.78)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, lineHeight: 1, borderRadius: '50%', pointerEvents: 'none' }} title="Cliquer pour agrandir">⚲</div>
+        }
+      </button>
+      <div style={{ minWidth: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, flexWrap: 'wrap' }}>
+          <span className="serif" style={{ fontSize: 21, fontWeight: 500, color: 'var(--ink)', letterSpacing: '.01em' }}>{m.name}</span>
+          {m.signature && <span title="Spécialité maison" style={{ color: 'var(--gold)', fontSize: 13 }}>✦</span>}
+          <SpiceDots level={m.hot} />
+        </div>
+        {m.desc &&
+        <div className="serif" style={{ fontStyle: 'italic', color: 'var(--ink-soft)', lineHeight: 1.45, marginTop: 3, maxWidth: '46ch', fontSize: "15px" }}>
+            {m.desc}
+          </div>
+        }
+        <div style={{ display: 'flex', gap: 4, marginTop: 6, flexWrap: 'wrap' }}>
+          {m.halal && <span className="tag-halal">حلال Halal</span>}
+          {m.gf && <span className="tag-gf">Sans gluten</span>}
+          {m.veg && <span className="tag-vege">Végé</span>}
+        </div>
+        <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', gap: 0 }}>
+          <div style={{ flex: 1, borderBottom: '2px dotted rgba(43,26,18,.25)', marginRight: 8 }} />
+          <PriceTag price={m.price} unit={m.unit} alt={m.alt} />
+        </div>
+      </div>
+    </div>);
+
+}
+
+function FooterNote() {
+  return (
+    <div style={{ textAlign: 'center', marginTop: 50, paddingTop: 32, borderTop: '1px dashed rgba(160,36,26,.3)' }}>
+      <div style={{ display: 'inline-flex', alignItems: 'center', gap: 22, flexWrap: 'wrap', justifyContent: 'center', fontSize: 12, color: 'var(--muted)', letterSpacing: '.08em' }}>
+        <span><span style={{ color: 'var(--red)' }}>◆</span> Épicé</span>
+        <span><span style={{ color: 'var(--gold)' }}>✦</span> Spécialité maison</span>
+        <span><span className="tag-halal" style={{ padding: '2px 5px' }}>حلال</span> Poulet halal uniquement</span>
+        <span><span className="tag-gf" style={{ padding: '2px 5px' }}>SG</span> Sans gluten</span>
+      </div>
+      <div className="serif" style={{ fontStyle: 'italic', fontSize: 15, color: 'var(--ink-soft)', marginTop: 18, maxWidth: 680, margin: '18px auto 0', lineHeight: 1.55 }}>
+        Tous nos plats sont préparés sur place, chaque jour. Seul le <strong>poulet</strong> est halal — les autres viandes ne le sont pas.
+        Une allergie ? N'hésitez pas à nous le dire, nous adapterons avec plaisir.<br />
+        Prix nets, service compris. Carte susceptible d'évoluer selon le marché.
+      </div>
+      <div style={{ marginTop: 24, display: 'flex', gap: 18, justifyContent: 'center', alignItems: 'center' }}>
+        <div className="stamp">福</div>
+      </div>
+    </div>);
+
+}
+
+/* ============ ZOOM MODAL (image seulement) ============ */
+function ZoomModal({ dish, onClose }) {
+  useEffect(() => {
+    if (!dish) return;
+    const onKey = (e) => {if (e.key === 'Escape') onClose();};
+    window.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [dish, onClose]);
+  if (!dish) return null;
+  return (
+    <div onClick={onClose} role="dialog" aria-modal="true" aria-label={`Photo — ${dish.name}`} style={{
+      position: 'fixed', inset: 0, zIndex: 200,
+      background: 'rgba(20,12,6,.92)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      padding: '4vh 4vw',
+      animation: 'zfade .2s ease',
+      cursor: 'zoom-out'
+    }}>
+      <style>{`@keyframes zfade{from{opacity:0}to{opacity:1}}@keyframes zpop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}`}</style>
+      <button onClick={onClose} aria-label="Fermer" style={{
+        position: 'absolute', top: 24, right: 24, width: 46, height: 46, borderRadius: '50%',
+        background: 'rgba(255,255,255,.95)', color: 'var(--red)', border: '1px solid var(--red)',
+        fontSize: 24, lineHeight: 1, paddingBottom: 3, zIndex: 5, cursor: 'pointer',
+        boxShadow: '0 8px 20px -8px rgba(0,0,0,.5)'
+      }}>×</button>
+      <img
+        src={dish.img}
+        alt={dish.name}
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          maxWidth: '92vw',
+          maxHeight: '90vh',
+          objectFit: 'contain',
+          display: 'block',
+          boxShadow: '0 30px 80px -10px rgba(0,0,0,.7)',
+          animation: 'zpop .3s cubic-bezier(.22,.61,.36,1)',
+          cursor: 'default'
+        }} />
+      
+    </div>);
+
+}
+
+/* ============ FAMILLE ============ */
+function Family() {
+  return (
+    <section style={{ maxWidth: 1200, margin: '80px auto 0', padding: '60px 24px', position: 'relative' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 46, alignItems: 'center' }}>
+        <div style={{ position: 'relative' }}>
+          <img src="images/r/compressed/hero.jpg" alt="Vitrine Table d'Asie" style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block', border: '1px solid rgba(160,36,26,.3)', boxShadow: '0 30px 60px -30px rgba(0,0,0,.45)' }} />
+          <div style={{ position: 'absolute', bottom: -30, right: -30, width: 180, height: 180, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <img src="images/r/logo-badge.png" alt="Logo Table d'Asie" style={{ width: '100%', height: '100%', objectFit: 'contain', filter: 'drop-shadow(0 8px 18px rgba(0,0,0,.25))' }} />
+          </div>
+        </div>
+        <div>
+          <div className="brush" style={{ fontSize: 32, color: 'var(--red)', lineHeight: 1 }}>家 的 味 道</div>
+          <h2 className="serif" style={{ fontSize: 'clamp(38px,4.5vw,52px)', margin: '4px 0 16px', fontWeight: 500, fontStyle: 'italic', color: 'var(--ink)' }}>Le goût de la maison</h2>
+          <p className="serif" style={{ fontSize: 21, fontStyle: 'italic', color: 'var(--ink-soft)', lineHeight: 1.55 }}>
+            Au cœur de Juan-les-Pins, une famille reçoit comme à la maison. Les nems sont roulés à la main chaque matin, les bouillons mijotent, et les woks chantent jusque tard dans la soirée.
+          </p>
+          <p style={{ fontSize: 15, lineHeight: 1.7, color: 'var(--ink-soft)', marginTop: 18 }}>
+            Pas de chichis : on choisit ce qu'on aime à la vitrine, on emporte ou on s'installe, on partage. Une cuisine sincère, fidèle aux saveurs du Cambodge, du Vietnam, de la Chine et de la Thaïlande — servie avec le sourire depuis 2011.
+          </p>
+          <div style={{ marginTop: 26, display: 'flex', gap: 14, alignItems: 'center' }}>
+            <div className="stamp" style={{ width: 64, height: 64, fontSize: 34 }}>味</div>
+            <div className="serif" style={{ fontStyle: 'italic', fontSize: 18, color: 'var(--ink)' }}>— fait maison, chaque jour, avec amour</div>
+          </div>
+        </div>
+      </div>
+    </section>);
+
+}
+
+/* ============ INFOS ============ */
+function Infos() {
+  const hours = [
+  ['Lundi', '10:30 – 22:00'],
+  ['Mardi', '10:30 – 22:00'],
+  ['Mercredi', '10:30 – 22:00'],
+  ['Jeudi', '10:30 – 22:00'],
+  ['Vendredi', '10:30 – 22:00'],
+  ['Samedi', '10:30 – 22:00'],
+  ['Dimanche', '10:30 – 21:00']];
+
+  const todayIdx = (new Date().getDay() + 6) % 7; // Lundi = 0
+
+  return (
+    <section style={{ marginTop: 90, background: 'var(--red)', color: 'var(--paper)', backgroundImage: 'radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.07), transparent 62%)' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '70px 24px' }}>
+        <div style={{ textAlign: 'center', marginBottom: 46 }}>
+          <div className="brush" style={{ fontSize: 32, color: 'var(--gold-soft)', lineHeight: 1 }}>联 系 我 们</div>
+          <h2 className="serif" style={{ fontSize: 'clamp(40px,5vw,52px)', margin: '4px 0 0', fontWeight: 500, fontStyle: 'italic' }}>Nous trouver</h2>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: 46 }}>
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: 30, color: 'var(--gold-soft)' }}>✿</div>
+            <div className="small" style={{ color: 'var(--gold-soft)', margin: '10px 0 14px' }}>ADRESSE</div>
+            <div className="serif" style={{ fontSize: 21, lineHeight: 1.45, fontStyle: 'italic' }}>
+              132 Boulevard du<br />Président Wilson<br />06160 Juan-les-Pins
+            </div>
+            <a href="https://maps.google.com/?q=132+Boulevard+du+President+Wilson+Juan+les+Pins" target="_blank" rel="noopener" style={{ display: 'inline-block', marginTop: 16, fontSize: 11, letterSpacing: '.2em', textTransform: 'uppercase', borderBottom: '1px solid var(--gold-soft)', paddingBottom: 3, color: 'var(--gold-soft)' }}>Voir sur la carte →</a>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: 30, color: 'var(--gold-soft)' }}>☎</div>
+            <div className="small" style={{ color: 'var(--gold-soft)', margin: '10px 0 14px' }}>COMMANDES</div>
+            <a href="tel:+33988418678" className="serif" style={{ fontSize: 30, fontStyle: 'italic', display: 'block' }}>09 88 41 86 78</a>
+            <div style={{ fontSize: 13, opacity: .85, marginTop: 10, lineHeight: 1.55 }}>Sur place · à emporter<br />Préparations à la pièce ou à la portion</div>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: 30, color: 'var(--gold-soft)' }}>◴</div>
+            <div className="small" style={{ color: 'var(--gold-soft)', margin: '10px 0 14px' }}>HORAIRES</div>
+            <div style={{ display: 'inline-block', textAlign: 'left' }}>
+              {hours.map(([d, h], i) => {
+                const today = i === todayIdx;
+                return (
+                  <div key={d} style={{ display: 'flex', justifyContent: 'space-between', gap: 24, padding: '4px 10px', fontSize: 13, minWidth: 300, borderRadius: 2, background: today ? 'rgba(227,176,72,.16)' : 'transparent' }}>
+                  <span style={{ opacity: .95, fontWeight: today ? 700 : 400, color: today ? 'var(--gold-soft)' : 'inherit' }}>{d}{today && <span className="small" style={{ fontSize: 8.5, marginLeft: 8, opacity: .9 }}>aujourd'hui</span>}</span>
+                  <span style={{ opacity: .9, fontFamily: "'Cormorant Garamond',serif", fontStyle: 'italic', fontVariantNumeric: 'tabular-nums' }}>{h}</span>
+                </div>);
+              })}
+            </div>
+            <div className="small" style={{ color: 'var(--gold-soft)', marginTop: 14, letterSpacing: '.16em' }}>Ouvert 7/7 · jours fériés inclus</div>
+          </div>
+        </div>
+      </div>
+    </section>);
+
+}
+
+function Footer() {
+  return (
+    <footer style={{ background: 'var(--ink)', color: 'rgba(245,236,215,.7)', padding: '46px 24px 28px', textAlign: 'center' }}>
+      <div style={{ display: 'inline-block', background: 'var(--paper)', padding: 10, borderRadius: '50%', marginBottom: 18, boxShadow: '0 8px 24px -10px rgba(0,0,0,.6)' }}>
+        <img src="images/r/logo-badge.png" alt="Table d'Asie" style={{ height: 110, width: 110, display: 'block', borderRadius: '50%' }} />
+      </div>
+      <div className="brush" style={{ fontSize: 22, color: 'var(--gold-soft)', marginBottom: 4, marginTop: 4 }}>谢 谢 光 临</div>
+      <div className="small" style={{ letterSpacing: '.25em' }}>MERCI DE VOTRE VISITE · TABLE D'ASIE © 2026</div>
+    </footer>);
+
+}
+
+function App() {
+  const [zoomed, setZoomed] = useState(null);
+  return (
+    <>
+      <Header />
+      <Formules />
+      <Sep />
+      <MenuCard onZoom={setZoomed} />
+      <Sep />
+      <Family />
+      <Infos />
+      <Footer />
+      <ZoomModal dish={zoomed} onClose={() => setZoomed(null)} />
+    </>);
+
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
