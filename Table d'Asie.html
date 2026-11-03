@@ -128,6 +128,13 @@
   .sep{display:flex;align-items:center;justify-content:center;gap:16px}
   .sep::before,.sep::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(160,36,26,.32),transparent)}
   .sep i{flex:0 0 auto;width:7px;height:7px;border:1px solid var(--red);transform:rotate(45deg);opacity:.7}
+  /* Bouton « Entrer dans la boutique » (expérience immersive) */
+  .enter-shop{margin-top:26px;display:inline-flex;align-items:center;gap:12px;padding:14px 28px;border:1px solid var(--gold-soft);color:#fff;letter-spacing:.02em;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;text-shadow:0 2px 10px rgba(0,0,0,.6);background:linear-gradient(180deg,rgba(178,30,21,.5),rgba(124,20,16,.62));box-shadow:0 12px 34px -14px rgba(0,0,0,.7),inset 0 0 0 1px rgba(227,176,72,.25);backdrop-filter:blur(2px);transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,background .25s;animation:eglow 3s ease-in-out infinite}
+  .enter-shop:hover{transform:translateY(-2px) scale(1.02);background:linear-gradient(180deg,rgba(200,40,28,.72),rgba(150,24,18,.8));box-shadow:0 18px 44px -14px rgba(0,0,0,.8),0 0 30px -6px rgba(227,176,72,.5),inset 0 0 0 1px rgba(227,176,72,.55)}
+  .enter-shop .zh{font-family:'Ma Shan Zheng',cursive;font-size:24px;color:var(--gold-soft)}
+  .enter-shop .arr{transition:transform .25s}
+  .enter-shop:hover .arr{transform:translateX(4px)}
+  @keyframes eglow{0%,100%{box-shadow:0 12px 34px -14px rgba(0,0,0,.7),inset 0 0 0 1px rgba(227,176,72,.25)}50%{box-shadow:0 12px 34px -14px rgba(0,0,0,.7),0 0 22px -6px rgba(227,176,72,.4),inset 0 0 0 1px rgba(227,176,72,.45)}}
   /* Accessibilité clavier : anneau de focus visible sur les éléments interactifs */
   a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--red);outline-offset:2px}
   /* Respect de la préférence « animations réduites » */
@@ -387,6 +394,11 @@ function Header() {
           <p className="serif" style={{ fontSize: 'clamp(17px,1.6vw,22px)', fontStyle: 'italic', color: 'rgba(255,250,240,.95)', marginTop: 14, maxWidth: 620, lineHeight: 1.45, textShadow: '0 2px 10px rgba(0,0,0,.6)' }}>Cuisine familiale aux saveurs du Cambodge, du Vietnam, de Chine et de Thaïlande — préparée chaque jour, à deux pas de la pinède.
 
           </p>
+          <a className="enter-shop" href="experience.html" aria-label="Entrer dans la boutique — expérience immersive">
+            <span className="zh">入</span>
+            Entrer dans la boutique
+            <span className="arr" aria-hidden="true">→</span>
+          </a>
         </div>
       </div>
       <div style={{ background: 'var(--paper-2)', borderBottom: '1px solid rgba(160,36,26,.25)', borderTop: '1px solid rgba(160,36,26,.25)' }}>

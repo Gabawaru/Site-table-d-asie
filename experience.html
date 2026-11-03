@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Entrez à la Table d'Asie — Expérience immersive</title>
+<meta name="description" content="Poussez la porte de la Table d'Asie — une entrée immersive dans notre boutique asiatique de Juan-les-Pins, puis nos spécialités faites maison." />
+<meta name="robots" content="index, follow" />
+<meta property="og:title" content="Entrez à la Table d'Asie" />
+<meta property="og:description" content="Poussez la porte et entrez dans la boutique — expérience immersive." />
+<meta property="og:type" content="website" />
+<link rel="icon" type="image/png" href="https://table-dasie.vercel.app/images/r/logo-badge.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://table-dasie.vercel.app" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f4ead0; --paper-2:#ecdfb6; --ink:#2a1a10; --ink-soft:#5a3e2b;
+    --red:#b21e15; --red-deep:#7c1410; --gold:#c39126; --gold-soft:#e0b048;
+    --jade:#2f6b46; --muted:#8a7256; --night:#140a08;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--night); color:var(--paper);
+    font-family:'Inter',system-ui,sans-serif; -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility; line-height:1.55; overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+  .serif{font-family:'Cormorant Garamond',serif}
+  .brush{font-family:'Ma Shan Zheng',cursive}
+  .small{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase}
+  .price{font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--gold-soft);white-space:nowrap;font-variant-numeric:tabular-nums lining-nums}
+  ::selection{background:var(--red);color:var(--paper)}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--gold-soft);outline-offset:3px}
+
+  /* ============================ SCÈNE 1 : LA FAÇADE DE NUIT ============================ */
+  #intro{position:fixed;inset:0;z-index:50;overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 50% 120%, rgba(178,30,21,.35), transparent 55%),
+      radial-gradient(90% 70% at 50% -10%, rgba(227,176,72,.10), transparent 60%),
+      linear-gradient(180deg,#0a0504 0%, #1a0b08 45%, #241009 100%);
+    display:flex;align-items:center;justify-content:center;
+    transition:opacity .9s ease, filter .9s ease;
+  }
+  .stars{position:absolute;inset:0;pointer-events:none;opacity:.6;
+    background-image:
+      radial-gradient(1px 1px at 20% 30%, rgba(255,235,190,.8), transparent),
+      radial-gradient(1px 1px at 70% 20%, rgba(255,235,190,.6), transparent),
+      radial-gradient(1px 1px at 40% 15%, rgba(255,235,190,.7), transparent),
+      radial-gradient(1.5px 1.5px at 85% 35%, rgba(255,235,190,.6), transparent),
+      radial-gradient(1px 1px at 55% 40%, rgba(255,235,190,.5), transparent),
+      radial-gradient(1px 1px at 10% 50%, rgba(255,235,190,.5), transparent);
+    animation:twinkle 5s ease-in-out infinite;
+  }
+  @keyframes twinkle{0%,100%{opacity:.5}50%{opacity:.85}}
+
+  .scene{position:relative;width:min(560px,92vw);display:flex;flex-direction:column;align-items:center;
+    transform-origin:50% 68%;
+    transition:transform 1.5s cubic-bezier(.6,.02,.3,1), opacity 1s ease;}
+  .perspective{perspective:1200px;}
+
+  /* Enseigne */
+  .sign{display:flex;flex-direction:column;align-items:center;margin-bottom:6px;z-index:3}
+  .sign img{width:min(190px,42vw);height:auto;filter:drop-shadow(0 0 26px rgba(227,176,72,.45)) drop-shadow(0 12px 30px rgba(0,0,0,.6));
+    animation:signglow 4.5s ease-in-out infinite;}
+  @keyframes signglow{0%,100%{filter:drop-shadow(0 0 20px rgba(227,176,72,.35)) drop-shadow(0 12px 30px rgba(0,0,0,.6))}
+    50%{filter:drop-shadow(0 0 34px rgba(227,176,72,.65)) drop-shadow(0 12px 30px rgba(0,0,0,.6))}}
+  .sign .zh{font-family:'Ma Shan Zheng',cursive;font-size:clamp(26px,6vw,40px);color:var(--gold-soft);
+    letter-spacing:.14em;margin-top:2px;text-shadow:0 0 18px rgba(227,176,72,.55),0 2px 6px rgba(0,0,0,.7)}
+
+  /* Auvent */
+  .awning{width:min(440px,86vw);height:26px;position:relative;border-radius:4px 4px 0 0;z-index:2;
+    background:repeating-linear-gradient(90deg,var(--red) 0 30px,var(--red-deep) 30px 60px);
+    box-shadow:inset 0 -4px 9px rgba(0,0,0,.25),0 6px 24px rgba(0,0,0,.5);}
+  .awning::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+    background:linear-gradient(90deg,transparent,var(--gold) 12%,var(--gold-soft) 50%,var(--gold) 88%,transparent);opacity:.8}
+  .awning-fringe{width:min(440px,86vw);height:16px;
+    background:repeating-linear-gradient(90deg, transparent 0 15px, var(--red-deep) 15px 30px);
+    -webkit-mask:repeating-linear-gradient(90deg,#000 0 18px, transparent 18px 30px);
+    mask:repeating-linear-gradient(90deg,#000 0 18px, transparent 18px 30px);
+    clip-path:polygon(0 0,100% 0,100% 40%,93% 100%,86% 40%,79% 100%,72% 40%,65% 100%,58% 40%,51% 100%,44% 40%,37% 100%,30% 40%,23% 100%,16% 40%,9% 100%,2% 40%,0 60%);
+    margin-bottom:-2px;opacity:.95;z-index:2}
+
+  /* Porte + intérieur entrevu */
+  .door{position:relative;width:min(300px,68vw);height:min(400px,56vh);margin-top:-2px;
+    border:3px solid #3a211470;border-top:0;border-radius:0 0 6px 6px;overflow:hidden;z-index:1;
+    background:#1a0f0a;box-shadow:0 30px 70px -20px rgba(0,0,0,.8), inset 0 0 40px rgba(0,0,0,.6);}
+  .door-inside{position:absolute;inset:0;
+    background:#2a1109 center/cover no-repeat;
+    filter:brightness(.72) saturate(1.1); transition:filter 1.4s ease, transform 1.5s ease;}
+  .door-inside::after{content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 50% 60%, rgba(227,176,72,.28), rgba(124,20,16,.25) 55%, rgba(10,5,4,.55) 100%);}
+  .leaf{position:absolute;top:0;bottom:0;width:50.4%;z-index:2;
+    background:
+      linear-gradient(90deg, rgba(0,0,0,.35), rgba(0,0,0,0) 12%, rgba(255,255,255,.04) 50%, rgba(0,0,0,0) 88%, rgba(0,0,0,.35)),
+      repeating-linear-gradient(0deg, #5a2f1c 0 26px, #4a2616 26px 28px),
+      linear-gradient(180deg,#6a3a22,#431f12);
+    box-shadow:inset 0 0 30px rgba(0,0,0,.5);
+    transition:transform 1.5s cubic-bezier(.6,.02,.3,1);}
+  .leaf-l{left:0;border-right:1px solid rgba(0,0,0,.4)}
+  .leaf-r{right:0;border-left:1px solid rgba(0,0,0,.4)}
+  .leaf .knob{position:absolute;top:50%;width:12px;height:34px;border-radius:7px;background:linear-gradient(180deg,var(--gold-soft),var(--gold));
+    transform:translateY(-50%);box-shadow:0 0 10px rgba(227,176,72,.5),inset 0 0 4px rgba(0,0,0,.3)}
+  .leaf-l .knob{right:10px}
+  .leaf-r .knob{left:10px}
+  .door .seam{position:absolute;top:0;bottom:0;left:50%;width:4px;transform:translateX(-50%);z-index:3;
+    background:linear-gradient(180deg, rgba(227,176,72,.1), rgba(227,176,72,.85) 45%, rgba(227,176,72,.85) 55%, rgba(227,176,72,.1));
+    filter:blur(1px);opacity:.75;transition:opacity .6s ease}
+  .door .hint-zh{position:absolute;left:0;right:0;top:46%;text-align:center;z-index:4;
+    font-family:'Ma Shan Zheng',cursive;color:#fff;font-size:clamp(28px,8vw,46px);
+    text-shadow:0 0 22px rgba(227,176,72,.8),0 2px 8px rgba(0,0,0,.8);opacity:0;transition:opacity .5s ease}
+
+  /* Lanternes */
+  .lanterns{position:absolute;top:2px;left:0;right:0;display:flex;justify-content:space-between;
+    padding:0 2vw;pointer-events:none;z-index:4}
+  .lantern{transform-origin:top center;animation:sway 5.5s ease-in-out infinite}
+  .lantern.b{animation-delay:-2.2s}
+  @keyframes sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+  .lantern .cord{width:1px;height:26px;background:rgba(227,176,72,.5);margin:0 auto}
+  .lantern .body{position:relative;width:62px;height:74px;border-radius:50%/44%;
+    background:radial-gradient(circle at 36% 28%, #e84634, var(--red) 55%, var(--red-deep));
+    border:2px solid var(--red-deep);
+    box-shadow:inset 0 -8px 18px rgba(0,0,0,.35), 0 0 34px rgba(227,80,50,.55), 0 0 60px rgba(178,30,21,.35);
+    display:flex;align-items:center;justify-content:center}
+  .lantern .body::before,.lantern .body::after{content:"";position:absolute;left:7px;right:7px;height:4px;background:var(--gold);border-radius:2px}
+  .lantern .body::before{top:-3px}.lantern .body::after{bottom:-3px}
+  .lantern .fu{font-family:'Ma Shan Zheng',cursive;font-size:30px;color:var(--gold-soft)}
+  .lantern .tassel{width:12px;height:12px;margin:3px auto 0;background:var(--gold);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+
+  /* CTA entrer */
+  .cta{position:absolute;left:0;right:0;bottom:max(6vh,34px);display:flex;flex-direction:column;align-items:center;gap:14px;z-index:6;
+    transition:opacity .6s ease, transform .6s ease}
+  .enter-btn{display:inline-flex;align-items:center;gap:14px;padding:16px 34px;border-radius:2px;
+    border:1px solid var(--gold-soft);color:#fff;letter-spacing:.02em;
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);
+    background:linear-gradient(180deg, rgba(178,30,21,.6), rgba(124,20,16,.7));
+    box-shadow:0 0 0 0 rgba(227,176,72,.5), 0 16px 40px -16px rgba(0,0,0,.8), inset 0 0 0 1px rgba(227,176,72,.25);
+    animation:pulse 2.4s ease-in-out infinite;transition:transform .25s, box-shadow .25s, background .25s}
+  .enter-btn:hover{transform:translateY(-2px) scale(1.03);background:linear-gradient(180deg, rgba(200,40,28,.8), rgba(150,24,18,.85));
+    box-shadow:0 0 36px -4px rgba(227,176,72,.6), 0 18px 46px -16px rgba(0,0,0,.85), inset 0 0 0 1px rgba(227,176,72,.6)}
+  .enter-btn .zh{font-family:'Ma Shan Zheng',cursive;font-size:28px;color:var(--gold-soft)}
+  .enter-btn .play{font-size:16px}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(227,176,72,.35),0 16px 40px -16px rgba(0,0,0,.8),inset 0 0 0 1px rgba(227,176,72,.25)}
+    50%{box-shadow:0 0 30px 2px rgba(227,176,72,.45),0 16px 40px -16px rgba(0,0,0,.8),inset 0 0 0 1px rgba(227,176,72,.45)}}
+  .hint{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(227,176,72,.75)}
+  .sound-toggle{position:absolute;top:18px;right:18px;z-index:7;width:42px;height:42px;border-radius:50%;
+    border:1px solid rgba(227,176,72,.4);background:rgba(20,10,8,.5);color:var(--gold-soft);font-size:18px;
+    display:flex;align-items:center;justify-content:center;backdrop-filter:blur(3px)}
+
+  /* Particules (embers) */
+  .embers{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:5}
+  .ember{position:absolute;bottom:-10px;width:4px;height:4px;border-radius:50%;
+    background:radial-gradient(circle,#ffd27a,#e0863a);opacity:0;filter:blur(.3px);
+    animation:rise linear infinite}
+  @keyframes rise{0%{transform:translateY(0) translateX(0) scale(.6);opacity:0}
+    10%{opacity:.9}90%{opacity:.5}100%{transform:translateY(-105vh) translateX(var(--dx,20px)) scale(1);opacity:0}}
+
+  /* Flash d'entrée */
+  #flash{position:fixed;inset:0;z-index:60;background:radial-gradient(circle at 50% 60%, #fff5e0, #e0b048 35%, rgba(178,30,21,0) 75%);
+    opacity:0;pointer-events:none;transition:opacity .5s ease}
+
+  /* États de transition */
+  body.entering #intro .leaf-l{transform:translateX(-106%)}
+  body.entering #intro .leaf-r{transform:translateX(106%)}
+  body.entering #intro .door-inside{filter:brightness(1.15) saturate(1.2);transform:scale(1.08)}
+  body.entering #intro .seam{opacity:0}
+  body.entering #intro .cta{opacity:0;transform:translateY(16px)}
+  body.entering #intro .hint-zh{opacity:1}
+  body.entering #intro .scene{transform:scale(3.4) translateY(6%);}
+  body.entering #flash{opacity:.9;transition:opacity .9s ease}
+  body.inside #intro{opacity:0;filter:blur(6px);pointer-events:none}
+  body.inside #flash{opacity:0}
+  body:not(.inside){overflow:hidden;height:100vh}
+
+  /* ============================ SCÈNE 2 : L'INTÉRIEUR ============================ */
+  #interior{opacity:0;transition:opacity 1s ease;
+    background:
+      radial-gradient(rgba(90,62,43,.035) 1px, transparent 1.5px),
+      linear-gradient(180deg,#f6efd6,#ede1be);
+    background-size:11px 11px,100% 100%;color:var(--ink);min-height:100vh}
+  body.inside #interior{opacity:1}
+
+  .top-lanterns{position:sticky;top:0;z-index:5;height:0;overflow:visible;pointer-events:none}
+  .top-lanterns .row{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-around;padding:0 4vw}
+  .top-lanterns .lantern .body{width:46px;height:56px}
+  .top-lanterns .lantern .fu{font-size:22px}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  .hero-in{text-align:center;padding:90px 24px 40px;position:relative}
+  .hero-in .badge{width:min(150px,36vw);height:auto;filter:drop-shadow(0 14px 30px rgba(0,0,0,.3));margin-bottom:8px}
+  .hero-in .zh{font-family:'Ma Shan Zheng',cursive;font-size:clamp(26px,4vw,38px);color:var(--red)}
+  .hero-in h1{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+    font-size:clamp(40px,7vw,76px);margin:2px 0 8px;color:var(--ink)}
+  .hero-in p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(17px,2vw,22px);
+    color:var(--ink-soft);max-width:640px;margin:0 auto;line-height:1.5}
+  .hero-cta{margin-top:26px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:2px;
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;transition:transform .2s,box-shadow .2s,background .2s}
+  .btn-primary{background:var(--red);color:var(--paper);box-shadow:0 12px 30px -14px rgba(178,30,21,.8)}
+  .btn-primary:hover{transform:translateY(-2px) scale(1.02);background:#c62418;box-shadow:0 16px 36px -14px rgba(178,30,21,.9)}
+  .btn-ghost{border:1px solid rgba(160,36,26,.45);color:var(--red)}
+  .btn-ghost:hover{transform:translateY(-2px);background:rgba(160,36,26,.06)}
+  .btn .zh{font-family:'Ma Shan Zheng',cursive;font-size:19px}
+
+  .section{padding:40px 0 20px}
+  .section-head{text-align:center;margin-bottom:34px}
+  .section-head .zh{font-family:'Ma Shan Zheng',cursive;font-size:clamp(24px,3.4vw,32px);color:var(--red);line-height:1}
+  .section-head h2{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+    font-size:clamp(34px,5vw,54px);margin:4px 0 0;color:var(--ink)}
+  .orn{display:flex;align-items:center;gap:14px;color:var(--red);max-width:360px;margin:12px auto 0}
+  .orn::before,.orn::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--red) 20%,var(--red) 80%,transparent);opacity:.5}
+  .orn i{width:6px;height:6px;border:1px solid var(--red);transform:rotate(45deg);opacity:.7}
+
+  .dishes{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:26px}
+  .dish{position:relative;background:var(--paper);border:1px solid rgba(160,36,26,.25);overflow:hidden;
+    box-shadow:0 2px 0 rgba(0,0,0,.04),0 20px 44px -26px rgba(60,30,20,.4);
+    transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s}
+  .dish:hover{transform:translateY(-6px);box-shadow:0 30px 60px -26px rgba(60,30,20,.55),0 0 0 1px rgba(227,176,72,.4)}
+  .dish .ph{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--paper-2)}
+  .dish .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+  .dish:hover .ph img{transform:scale(1.07)}
+  .dish .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(20,10,6,.35))}
+  .dish .corner{position:absolute;top:0;left:0;width:0;height:0;border-style:solid;border-width:14px 14px 0 0;
+    border-color:var(--red) transparent transparent transparent;opacity:.85;z-index:2}
+  .dish .flags{position:absolute;top:10px;right:10px;display:flex;gap:5px;z-index:2}
+  .flag{font-size:9px;font-weight:700;letter-spacing:.12em;padding:3px 7px;text-transform:uppercase;border-radius:2px;color:#fff}
+  .flag.halal{background:var(--jade)} .flag.gf{background:var(--gold);color:var(--ink)} .flag.hot{background:#c0362a}
+  .dish .body{padding:16px 18px 18px}
+  .dish .body .top{display:flex;align-items:baseline;gap:8px}
+  .dish h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:22px;margin:0;color:var(--ink)}
+  .dish .star{color:var(--gold);font-size:14px}
+  .dish .desc{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--ink-soft);font-size:15px;line-height:1.45;margin:6px 0 0;min-height:44px}
+  .dish .row{display:flex;align-items:center;margin-top:12px}
+  .dish .row .line{flex:1;border-bottom:2px dotted rgba(43,26,18,.25);margin-right:8px}
+  .dish .price-tag{color:var(--red)}
+
+  .menus{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:1000px;margin:0 auto}
+  .menu-card{text-align:center;padding:26px 20px;background:var(--paper);border:1px solid rgba(160,36,26,.3);
+    box-shadow:0 18px 40px -24px rgba(60,30,20,.4);position:relative;transition:transform .3s,box-shadow .3s}
+  .menu-card:hover{transform:translateY(-4px);box-shadow:0 26px 54px -24px rgba(60,30,20,.55)}
+  .menu-card.best{background:var(--red);color:var(--paper);border-color:var(--red-deep)}
+  .menu-card .zh{font-family:'Ma Shan Zheng',cursive;font-size:22px;color:var(--red)}
+  .menu-card.best .zh{color:var(--gold-soft)}
+  .menu-card h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:24px;margin:4px 0 6px}
+  .menu-card .amt{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:40px;color:var(--red)}
+  .menu-card.best .amt{color:var(--gold-soft)}
+  .menu-card .when{font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.7;margin-top:10px}
+  .menu-card .fla{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--ink);
+    font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;font-weight:700}
+
+  .infos{margin-top:30px;background:var(--red);color:var(--paper);
+    background-image:radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.07), transparent 62%)}
+  .infos .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:40px;padding:60px 24px}
+  .infos .col{text-align:center}
+  .infos .ic{font-size:28px;color:var(--gold-soft)}
+  .infos .lb{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-soft);margin:10px 0 12px}
+  .infos .v{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;line-height:1.45}
+  .infos a.tel{font-size:28px}
+  .infos .maplink{display:inline-block;margin-top:14px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid var(--gold-soft);color:var(--gold-soft);padding-bottom:3px}
+
+  footer{background:var(--ink);color:rgba(245,236,215,.72);text-align:center;padding:40px 24px 30px}
+  footer .zh{font-family:'Ma Shan Zheng',cursive;font-size:22px;color:var(--gold-soft)}
+  footer .small{letter-spacing:.24em;margin-top:6px}
+
+  .replay{position:fixed;bottom:20px;right:20px;z-index:30;display:inline-flex;align-items:center;gap:8px;
+    padding:11px 18px;border-radius:40px;background:rgba(42,26,16,.9);color:var(--paper);font-size:13px;
+    border:1px solid rgba(227,176,72,.4);box-shadow:0 12px 30px -12px rgba(0,0,0,.6);opacity:0;transition:opacity .5s;pointer-events:none}
+  body.inside .replay{opacity:1;pointer-events:auto}
+  .replay:hover{background:var(--red)}
+
+  /* Révélation au scroll */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation:none!important;transition-duration:.001ms!important}
+    .reveal{opacity:1;transform:none}
+  }
+  @media (max-width:560px){
+    .lanterns{padding:0}
+    .lantern .body{width:48px;height:58px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== SCÈNE 1 : FAÇADE ===================== -->
+<div id="flash"></div>
+<section id="intro" aria-label="Entrée de la boutique">
+  <div class="stars"></div>
+  <button class="sound-toggle" id="soundToggle" aria-label="Activer ou couper le son" title="Son">♪</button>
+  <div class="embers" id="embers"></div>
+
+  <div class="perspective">
+    <div class="scene" id="scene">
+      <div class="sign">
+        <img src="https://table-dasie.vercel.app/images/r/logo-badge.png" alt="Table d'Asie" />
+        <div class="zh">歡 迎 光 臨</div>
+      </div>
+      <div class="awning"></div>
+      <div class="awning-fringe"></div>
+
+      <div class="door" id="door">
+        <div class="door-inside" id="doorInside"></div>
+        <div class="hint-zh">入</div>
+        <div class="seam"></div>
+        <div class="leaf leaf-l"><span class="knob"></span></div>
+        <div class="leaf leaf-r"><span class="knob"></span></div>
+        <div class="lanterns">
+          <div class="lantern"><div class="cord"></div><div class="body"><span class="fu">福</span></div><div class="tassel"></div></div>
+          <div class="lantern b"><div class="cord"></div><div class="body"><span class="fu">福</span></div><div class="tassel"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta" id="cta">
+    <button class="enter-btn" id="enterBtn">
+      <span class="zh">入</span>
+      <span>Entrer dans la boutique</span>
+      <span class="play">▶</span>
+    </button>
+    <div class="hint">Cliquez ou appuyez sur Entrée</div>
+  </div>
+</section>
+
+<!-- ===================== SCÈNE 2 : INTÉRIEUR ===================== -->
+<main id="interior">
+  <div class="top-lanterns"><div class="row" id="topLanterns"></div></div>
+
+  <section class="hero-in">
+    <img class="badge" src="https://table-dasie.vercel.app/images/r/logo-badge.png" alt="Table d'Asie" />
+    <div class="zh">家 的 味 道</div>
+    <h1>Bienvenue à la maison</h1>
+    <p>Vous voilà entré. Ici, les nems sont roulés à la main chaque matin et les woks chantent jusque tard —
+       cuisine familiale du Cambodge, du Vietnam, de Chine et de Thaïlande, faite maison depuis 2011.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="tel:+33988418678"><span class="zh">叫</span> 09 88 41 86 78</a>
+      <a class="btn btn-ghost" href="Table d'Asie.html"><span class="zh">菜</span> Voir toute la carte →</a>
+    </div>
+  </section>
+
+  <section class="section wrap reveal">
+    <div class="section-head">
+      <div class="zh">招 牌 菜</div>
+      <h2>Nos spécialités</h2>
+      <div class="orn"><i></i></div>
+    </div>
+    <div class="dishes" id="dishes"></div>
+  </section>
+
+  <section class="section wrap reveal">
+    <div class="section-head">
+      <div class="zh">套 餐</div>
+      <h2>Nos menus</h2>
+      <div class="orn"><i></i></div>
+    </div>
+    <div class="menus" id="menus"></div>
+  </section>
+
+  <section class="infos reveal">
+    <div class="grid wrap">
+      <div class="col">
+        <div class="ic">✿</div><div class="lb">Adresse</div>
+        <div class="v">132 Boulevard du<br/>Président Wilson<br/>06160 Juan-les-Pins</div>
+        <a class="maplink" href="https://maps.google.com/?q=132+Boulevard+du+President+Wilson+Juan+les+Pins" target="_blank" rel="noopener">Voir sur la carte →</a>
+      </div>
+      <div class="col">
+        <div class="ic">☎</div><div class="lb">Commandes</div>
+        <a class="v tel serif" href="tel:+33988418678">09 88 41 86 78</a>
+        <div class="v" style="font-size:14px;opacity:.85;margin-top:8px">Sur place · à emporter</div>
+      </div>
+      <div class="col">
+        <div class="ic">◴</div><div class="lb">Horaires</div>
+        <div class="v">Lun – Sam · 10:30 – 22:00<br/>Dimanche · 10:30 – 21:00</div>
+        <div class="lb" style="margin-top:12px">Ouvert 7/7 · jours fériés inclus</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="zh">谢 谢 光 临</div>
+    <div class="small">MERCI DE VOTRE VISITE · TABLE D'ASIE</div>
+  </footer>
+</main>
+
+<a class="replay" id="replay" href="#" aria-label="Revenir à l'entrée">↺ Revoir l'entrée</a>
+
+<noscript>
+  <div style="padding:30px;text-align:center;color:#f4ead0">
+    Cette expérience nécessite JavaScript. <a style="color:#e0b048" href="Table d'Asie.html">Accéder au site →</a>
+  </div>
+</noscript>
+
+<script>
+(function(){
+  "use strict";
+  var IMG = 'https://table-dasie.vercel.app/images/r/compressed/';
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- Intérieur entrevu derrière la porte ---- */
+  var doorInside = document.getElementById('doorInside');
+  doorInside.style.backgroundImage = "url('" + IMG + "interieur.jpg')";
+
+  /* ---- Données réelles (reprises de la carte) ---- */
+  var DISHES = [
+    { n:"Poulet Général Tao", d:"Émincé de poulet pané et frit, sauce aigre-piquante, poivron, oignon, coriandre", p:"7,90", u:"portion", img:"regal-poulet.jpg", sig:true, halal:true },
+    { n:"Bo bun bœuf", d:"Bœuf sauté à la citronnelle, vermicelles de riz, carotte, concombre, herbes fraîches", p:"8,50", u:"portion", img:"bo-bun.jpg", gf:true },
+    { n:"Bœuf basilic piquant", d:"Bœuf sauté, basilic thaï, piment, bambou, petits pois, oignon, carotte, courgette", p:"7,90", u:"portion", img:"boeuf-piquant.jpg", hot:true },
+    { n:"Crevette curry à la citronnelle", d:"Crevettes mijotées au curry, citronnelle, poivron, bambou, carotte, courgette", p:"8,50", u:"portion", img:"crevettes-curry.jpg", gf:true },
+    { n:"Rouleau de printemps", d:"Galette de riz, crevette, vermicelles, salade, menthe, coriandre, ciboulette", p:"3,20", u:"pièce", img:"rouleaux.jpg", gf:true },
+    { n:"Yakitori poulet", d:"Brochettes de poulet marinées, sauce soja-caramel, grillées", p:"4,20", u:"4 pièces", img:"yakitori.jpg", halal:true }
+  ];
+  var MENUS = [
+    { zh:"快速套餐", t:"Menu Express", a:"12,00", when:"midi" },
+    { zh:"经典套餐", t:"Menu Classique", a:"15,50", when:"midi & soir" },
+    { zh:"家常套餐", t:"Menu Maison", a:"16,50", when:"midi & soir" },
+    { zh:"主厨套餐", t:"Menu du Chef", a:"18,00", when:"midi & soir", best:true }
+  ];
+
+  function el(tag, cls, html){ var e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e; }
+
+  /* ---- Cartes plats ---- */
+  var dishesWrap = document.getElementById('dishes');
+  DISHES.forEach(function(m, i){
+    var card = el('article','dish');
+    var flags = '';
+    if(m.halal) flags += '<span class="flag halal">حلال Halal</span>';
+    if(m.gf) flags += '<span class="flag gf">Sans gluten</span>';
+    if(m.hot) flags += '<span class="flag hot">◆ Épicé</span>';
+    card.innerHTML =
+      '<div class="ph"><span class="corner"></span>'+
+        (flags?'<div class="flags">'+flags+'</div>':'')+
+        '<img src="'+IMG+m.img+'" alt="'+m.n+'" '+(i<3?'loading="eager"':'loading="lazy"')+' decoding="async" '+
+        'onerror="this.closest(\'.ph\').classList.add(\'noimg\');this.style.display=\'none\'">'+
+      '</div>'+
+      '<div class="body">'+
+        '<div class="top"><h3>'+m.n+'</h3>'+(m.sig?'<span class="star" title="Spécialité maison">✦</span>':'')+'</div>'+
+        '<p class="desc">'+m.d+'</p>'+
+        '<div class="row"><span class="line"></span>'+
+          '<span class="price price-tag">'+m.p+' €</span>'+
+          '<span style="font-size:11px;color:var(--muted);margin-left:6px">/ '+m.u+'</span>'+
+        '</div>'+
+      '</div>';
+    dishesWrap.appendChild(card);
+  });
+
+  /* ---- Cartes menus ---- */
+  var menusWrap = document.getElementById('menus');
+  MENUS.forEach(function(f){
+    var c = el('article','menu-card'+(f.best?' best':''));
+    c.innerHTML = (f.best?'<div class="fla">★ Le préféré</div>':'')+
+      '<div class="zh">'+f.zh+'</div>'+
+      '<h3>'+f.t+'</h3>'+
+      '<div class="amt">'+f.a+' €</div>'+
+      '<div class="when">'+f.when+'</div>';
+    menusWrap.appendChild(c);
+  });
+
+  /* ---- Lanternes du bandeau intérieur ---- */
+  var topL = document.getElementById('topLanterns');
+  for(var k=0;k<5;k++){
+    var l = el('div','lantern'+(k%2?' b':''));
+    l.innerHTML = '<div class="cord"></div><div class="body"><span class="fu">福</span></div><div class="tassel"></div>';
+    topL.appendChild(l);
+  }
+
+  /* ---- Embers / particules ---- */
+  if(!reduce){
+    var emb = document.getElementById('embers');
+    for(var e=0;e<26;e++){
+      var p = el('div','ember');
+      p.style.left = (Math.random()*100)+'%';
+      var dur = 6+Math.random()*8;
+      p.style.animationDuration = dur+'s';
+      p.style.animationDelay = (-Math.random()*dur)+'s';
+      p.style.setProperty('--dx', (Math.random()*80-40)+'px');
+      var s = .5+Math.random()*1.4; p.style.width=p.style.height=(3*s)+'px';
+      emb.appendChild(p);
+    }
+  }
+
+  /* ---- Parallaxe douce sur la façade ---- */
+  var scene = document.getElementById('scene');
+  if(!reduce && window.matchMedia('(pointer:fine)').matches){
+    document.getElementById('intro').addEventListener('pointermove', function(ev){
+      var cx=(ev.clientX/window.innerWidth-.5), cy=(ev.clientY/window.innerHeight-.5);
+      if(!document.body.classList.contains('entering'))
+        scene.style.transform = 'rotateY('+(cx*4)+'deg) rotateX('+(-cy*3)+'deg)';
+    });
+  }
+
+  /* ---- Son (gong synthétisé, geste utilisateur) ---- */
+  var soundOn = true, actx=null;
+  var toggle = document.getElementById('soundToggle');
+  toggle.addEventListener('click', function(){
+    soundOn=!soundOn; toggle.textContent = soundOn?'♪':'✕'; toggle.style.opacity = soundOn?'1':'.5';
+  });
+  function gong(){
+    if(!soundOn) return;
+    try{
+      actx = actx || new (window.AudioContext||window.webkitAudioContext)();
+      var now = actx.currentTime;
+      var master = actx.createGain(); master.gain.value=0.0001; master.connect(actx.destination);
+      master.gain.setValueAtTime(0.0001, now);
+      master.gain.exponentialRampToValueAtTime(0.5, now+0.02);
+      master.gain.exponentialRampToValueAtTime(0.0008, now+2.4);
+      var lp = actx.createBiquadFilter(); lp.type='lowpass'; lp.frequency.setValueAtTime(2600, now);
+      lp.frequency.exponentialRampToValueAtTime(600, now+2.2); lp.connect(master);
+      [146.83,220,293.66,440,587.33].forEach(function(f,i){
+        var o=actx.createOscillator(); o.type=i>2?'sine':'triangle';
+        o.frequency.setValueAtTime(f*(1+ (Math.random()*0.006-0.003)), now);
+        var g=actx.createGain(); g.gain.value=(i===0?0.6:0.3)/(i+1); o.connect(g); g.connect(lp);
+        o.start(now); o.stop(now+2.5);
+      });
+    }catch(_){}
+  }
+
+  /* ---- Entrée ---- */
+  var entered=false;
+  function enter(){
+    if(entered) return; entered=true;
+    gong();
+    if(reduce){
+      document.body.classList.add('entering','inside');
+      afterInside(); return;
+    }
+    document.body.classList.add('entering');
+    setTimeout(function(){
+      document.body.classList.add('inside');
+      afterInside();
+    }, 1650);
+  }
+  function afterInside(){
+    document.body.style.height='auto';
+    revealObserve();
+    // révèle le héros tout de suite
+    var hero = document.querySelector('.hero-in');
+    if(hero) hero.classList.add('in');
+    window.scrollTo(0,0);
+  }
+
+  document.getElementById('enterBtn').addEventListener('click', enter);
+  document.getElementById('intro').addEventListener('click', function(ev){
+    if(ev.target.closest('#soundToggle')) return;
+    enter();
+  });
+  document.addEventListener('keydown', function(ev){
+    if(!entered && (ev.key==='Enter'||ev.key===' ')){ ev.preventDefault(); enter(); }
+  });
+
+  /* ---- Revoir l'entrée ---- */
+  document.getElementById('replay').addEventListener('click', function(ev){
+    ev.preventDefault();
+    document.body.classList.remove('entering','inside');
+    document.body.style.height='100vh';
+    entered=false;
+    document.querySelectorAll('.reveal').forEach(function(r){ r.classList.remove('in'); });
+    window.scrollTo(0,0);
+  });
+
+  /* ---- Révélation au scroll ---- */
+  function revealObserve(){
+    var items = document.querySelectorAll('.reveal:not(.in)');
+    if(!('IntersectionObserver' in window)){ items.forEach(function(i){i.classList.add('in');}); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold:.12 });
+    items.forEach(function(i){ io.observe(i); });
+  }
+})();
+</script>
+</body>
+</html>
