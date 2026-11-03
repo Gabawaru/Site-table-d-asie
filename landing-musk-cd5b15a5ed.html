@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Table d'Asie — Brouillon landing (méthode Musk)</title>
+<meta name="description" content="Brouillon de refonte de la page d'accueil Table d'Asie — audit UX, méthode Musk. Page de travail non publique." />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23b21e15'/><text x='50' y='68' font-size='60' text-anchor='middle' fill='%23e0b048' font-family='serif'>福</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f6efd9; --paper-2:#efe4c4; --ink:#241610; --ink-soft:#5a3e2b;
+    --red:#b21e15; --red-deep:#7c1410; --gold:#c39126; --gold-soft:#e0b048;
+    --jade:#2f6b46; --muted:#8a7256; --line:rgba(160,36,26,.22);
+    --ok:#2f6b46; --closed:#9a3b2f;
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  html,body{margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);line-height:1.5;
+    font-family:'Inter',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(rgba(90,62,43,.04) 1px,transparent 1.4px);background-size:12px 12px}
+  a{color:inherit;text-decoration:none}
+  .serif{font-family:'Cormorant Garamond',serif}
+  .brush{font-family:'Ma Shan Zheng',cursive}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  img{max-width:100%}
+
+  /* Ruban brouillon */
+  .draft-flag{position:fixed;z-index:60;top:0;left:0;background:#1c1c22;color:#ffd98a;
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;
+    border-bottom-right-radius:8px;box-shadow:0 6px 18px -8px rgba(0,0,0,.5)}
+  .draft-flag b{color:#fff}
+
+  /* Barre d'action collante (mobile-first conversion) */
+  .bar{position:sticky;top:0;z-index:40;background:rgba(246,239,217,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line)}
+  .bar .row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 20px;max-width:var(--maxw);margin:0 auto}
+  .bar .brandline{display:flex;align-items:center;gap:10px;min-width:0}
+  .bar .mark{width:34px;height:34px;flex:0 0 auto;border-radius:6px;background:var(--red);color:var(--gold-soft);
+    display:flex;align-items:center;justify-content:center;font-family:'Ma Shan Zheng',cursive;font-size:22px;line-height:1}
+  .bar .nm{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:19px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .bar .call{flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;
+    padding:9px 16px;border-radius:999px;font-weight:600;font-size:14px;box-shadow:0 8px 20px -10px rgba(178,30,21,.8)}
+  .bar .call:hover{background:#c62418}
+
+  /* Statut ouvert/fermé */
+  .status{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;
+    padding:6px 13px;border-radius:999px;border:1px solid transparent}
+  .status .dot{width:8px;height:8px;border-radius:50%}
+  .status.open{color:#1e5436;background:rgba(47,107,70,.12);border-color:rgba(47,107,70,.35)}
+  .status.open .dot{background:var(--ok);box-shadow:0 0 0 0 rgba(47,107,70,.5);animation:pulse 2s infinite}
+  .status.closed{color:#7c2a20;background:rgba(154,59,47,.12);border-color:rgba(154,59,47,.35)}
+  .status.closed .dot{background:var(--closed)}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(47,107,70,.5)}70%{box-shadow:0 0 0 7px rgba(47,107,70,0)}100%{box-shadow:0 0 0 0 rgba(47,107,70,0)}}
+
+  /* HÉRO : promesse + 3 actions, au-dessus de la ligne de flottaison */
+  .hero{position:relative;overflow:hidden;
+    background:
+      radial-gradient(120% 120% at 50% -20%, rgba(227,176,72,.16), transparent 60%),
+      linear-gradient(180deg,#fbf5e2,#f1e6c6)}
+  .hero .wrap{padding:38px 20px 30px;text-align:center}
+  .kicker{display:inline-flex;align-items:center;gap:10px;color:var(--red);font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+  .kicker::before,.kicker::after{content:"";width:22px;height:1px;background:var(--red);opacity:.5}
+  .hero .zh{font-family:'Ma Shan Zheng',cursive;color:var(--red);font-size:clamp(22px,5vw,30px);margin-top:14px;line-height:1}
+  .hero h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-style:italic;
+    font-size:clamp(40px,9vw,68px);margin:4px 0 6px;letter-spacing:.005em}
+  .promise{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(18px,2.6vw,23px);
+    color:var(--ink-soft);max-width:640px;margin:0 auto 6px}
+  .sub{font-size:14px;color:var(--muted);margin-top:4px}
+  .cta{margin:22px auto 6px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 22px;border-radius:999px;font-weight:600;font-size:16px;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease}
+  .btn:active{transform:translateY(1px)}
+  .btn-primary{background:var(--red);color:#fff;box-shadow:0 14px 30px -14px rgba(178,30,21,.85)}
+  .btn-primary:hover{background:#c62418;transform:translateY(-2px)}
+  .btn-sec{background:#fff;color:var(--red);border:1px solid var(--line)}
+  .btn-sec:hover{transform:translateY(-2px);box-shadow:0 12px 26px -16px rgba(0,0,0,.4)}
+  .btn .zh{font-family:'Ma Shan Zheng',cursive;font-size:18px}
+  .statuswrap{margin-top:18px}
+
+  /* Bandeau confiance (3 preuves, pas de blabla) */
+  .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper-2)}
+  .trust .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;text-align:center;max-width:var(--maxw);margin:0 auto}
+  .trust .cell{padding:16px 12px;border-left:1px solid var(--line)}
+  .trust .cell:first-child{border-left:0}
+  .trust .big{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(20px,3.4vw,26px);color:var(--red)}
+  .trust .lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+
+  section{padding:46px 0}
+  .sec-head{text-align:center;margin-bottom:26px}
+  .sec-head .zh{font-family:'Ma Shan Zheng',cursive;color:var(--red);font-size:clamp(20px,3.2vw,26px);line-height:1}
+  .sec-head h2{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:clamp(30px,5vw,44px);margin:3px 0 0}
+
+  /* Spécialités — sans photo, lisibilité d'abord */
+  .specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+  .spec{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:4px}
+  .spec .n{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:19px}
+  .spec .d{font-size:13px;color:var(--muted)}
+  .spec .tag{align-self:flex-start;margin-top:6px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    padding:3px 8px;border-radius:999px;background:rgba(195,145,38,.16);color:#86611a}
+
+  /* Formules — grille statique, pas d'auto-défilement */
+  .menus{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+  .menu{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 16px;text-align:center;position:relative}
+  .menu.best{background:var(--red);color:#fff;border-color:var(--red-deep)}
+  .menu .t{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px}
+  .menu .p{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:34px;color:var(--red);margin-top:4px}
+  .menu.best .p{color:var(--gold-soft)}
+  .menu .w{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.75;margin-top:6px}
+  .menu .flag{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--ink);
+    font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:3px 9px;border-radius:999px}
+  .menus-note{text-align:center;font-size:13px;color:var(--muted);margin-top:14px}
+
+  /* Infos pratiques — l'action, pas la déco */
+  .infos{background:var(--red);color:var(--paper)}
+  .infos .sec-head h2,.infos .sec-head .zh{color:var(--paper)}
+  .infos .sec-head .zh{color:var(--gold-soft)}
+  .infos .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+  .card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:22px}
+  .card h3{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-soft);margin:0 0 12px}
+  .card .big{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;line-height:1.4}
+  .hours{display:grid;gap:3px;font-size:14px}
+  .hours .h{display:flex;justify-content:space-between;gap:16px;padding:3px 8px;border-radius:6px}
+  .hours .h.today{background:rgba(227,176,72,.18);font-weight:700;color:var(--gold-soft)}
+  .infos a.u{color:var(--gold-soft);border-bottom:1px solid var(--gold-soft);padding-bottom:2px;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+  .infos .callbig{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--red);font-weight:700;
+    padding:12px 20px;border-radius:999px;font-size:20px;margin-top:4px}
+
+  footer{background:var(--ink);color:rgba(246,239,217,.72);text-align:center;padding:34px 20px 28px}
+  footer .zh{font-family:'Ma Shan Zheng',cursive;color:var(--gold-soft);font-size:20px}
+  footer .s{font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-top:6px}
+
+  /* Barre d'appel flottante (mobile) */
+  .fab{position:fixed;left:16px;right:16px;bottom:16px;z-index:45;display:none}
+  .fab a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--red);color:#fff;
+    padding:15px;border-radius:14px;font-weight:700;font-size:17px;box-shadow:0 16px 34px -12px rgba(178,30,21,.8)}
+  @media (max-width:640px){
+    .bar .nm{font-size:17px}
+    .trust .cell{padding:14px 8px}
+    .fab{display:block}
+    body{padding-bottom:84px}
+  }
+  @media (prefers-reduced-motion: reduce){*{animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="draft-flag"><b>BROUILLON</b> · méthode Musk · non public</div>
+
+<!-- Barre collante -->
+<div class="bar">
+  <div class="row">
+    <div class="brandline">
+      <span class="mark">福</span>
+      <span class="nm serif">Table d'Asie</span>
+    </div>
+    <a class="call" href="tel:+33988418678">☎ Appeler</a>
+  </div>
+</div>
+
+<!-- HÉRO -->
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">Traiteur asiatique · Juan-les-Pins</span>
+    <div class="zh">家 常 美 味</div>
+    <h1>Table d'Asie</h1>
+    <p class="promise">La cuisine familiale du Cambodge, du Vietnam, de Chine et de Thaïlande — faite maison chaque jour, à deux pas de la pinède.</p>
+    <p class="sub">Sur place &amp; à emporter · depuis 2011</p>
+
+    <div class="statuswrap">
+      <span class="status" id="status" aria-live="polite"><span class="dot"></span><span id="statusText">Horaires…</span></span>
+    </div>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="tel:+33988418678"><span class="zh">叫</span> Appeler &amp; commander</a>
+      <a class="btn btn-sec" href="#carte"><span class="zh">菜</span> Voir la carte</a>
+      <a class="btn btn-sec" href="https://maps.google.com/?q=132+Boulevard+du+President+Wilson+Juan+les+Pins" target="_blank" rel="noopener"><span class="zh">路</span> Itinéraire</a>
+    </div>
+  </div>
+</header>
+
+<!-- Confiance : 3 preuves -->
+<div class="trust">
+  <div class="grid">
+    <div class="cell"><div class="big">Fait maison</div><div class="lbl">chaque jour</div></div>
+    <div class="cell"><div class="big">4 cuisines</div><div class="lbl">Cambodge · Vietnam · Chine · Thaïlande</div></div>
+    <div class="cell"><div class="big">7/7</div><div class="lbl">jours fériés inclus</div></div>
+  </div>
+</div>
+
+<!-- Spécialités (sans photo) -->
+<section id="carte" class="wrap">
+  <div class="sec-head"><div class="zh">招 牌 菜</div><h2>Nos spécialités</h2></div>
+  <div class="specs">
+    <div class="spec"><span class="n">Poulet Général Tao</span><span class="d">pané &amp; frit, sauce aigre-piquante</span><span class="tag">Signature</span></div>
+    <div class="spec"><span class="n">Canard laqué</span><span class="d">salade, concombre, coriandre</span><span class="tag">Signature</span></div>
+    <div class="spec"><span class="n">Bo bun bœuf</span><span class="d">citronnelle, vermicelles, herbes fraîches</span></div>
+    <div class="spec"><span class="n">Nems maison</span><span class="d">poulet ou porc, roulés à la main</span></div>
+    <div class="spec"><span class="n">Bœuf basilic piquant</span><span class="d">basilic thaï, piment, légumes</span></div>
+    <div class="spec"><span class="n">Crevette curry citronnelle</span><span class="d">curry doux, légumes croquants</span></div>
+  </div>
+</section>
+
+<!-- Formules -->
+<section class="wrap" style="padding-top:0">
+  <div class="sec-head"><div class="zh">套 餐</div><h2>Nos menus</h2></div>
+  <div class="menus">
+    <div class="menu"><div class="t">Express</div><div class="p">12&nbsp;€</div><div class="w">le midi</div></div>
+    <div class="menu"><div class="t">Classique</div><div class="p">15,50&nbsp;€</div><div class="w">midi &amp; soir</div></div>
+    <div class="menu"><div class="t">Maison</div><div class="p">16,50&nbsp;€</div><div class="w">midi &amp; soir</div></div>
+    <div class="menu best"><div class="flag">★ préféré</div><div class="t">du Chef</div><div class="p">18&nbsp;€</div><div class="w">midi &amp; soir</div></div>
+  </div>
+  <p class="menus-note">Carte complète (entrées, plats, desserts, boissons) sur place et à emporter. Nems, siu mai, bo bun, canard laqué, desserts maison… <a href="index.html" style="color:var(--red);border-bottom:1px solid var(--red)">voir toute la carte →</a></p>
+</section>
+
+<!-- Infos pratiques -->
+<section class="infos">
+  <div class="wrap">
+    <div class="sec-head"><div class="zh">联 系 我 们</div><h2>Nous trouver</h2></div>
+    <div class="grid">
+      <div class="card">
+        <h3>Commander</h3>
+        <a class="callbig" href="tel:+33988418678">☎ 09 88 41 86 78</a>
+        <div class="big" style="font-size:15px;opacity:.85;margin-top:10px">Sur place · à emporter<br>commande au comptoir ou par téléphone</div>
+      </div>
+      <div class="card">
+        <h3>Adresse</h3>
+        <div class="big">132 Bd du Président Wilson<br>06160 Juan-les-Pins</div>
+        <a class="u" href="https://maps.google.com/?q=132+Boulevard+du+President+Wilson+Juan+les+Pins" target="_blank" rel="noopener" style="display:inline-block;margin-top:12px">Ouvrir l'itinéraire →</a>
+      </div>
+      <div class="card">
+        <h3>Horaires</h3>
+        <div class="hours" id="hours"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="zh">谢 谢 光 临</div>
+  <div class="s">Merci de votre visite · Table d'Asie</div>
+</footer>
+
+<!-- FAB mobile -->
+<div class="fab"><a href="tel:+33988418678">☎ Appeler — 09 88 41 86 78</a></div>
+
+<script>
+(function(){
+  "use strict";
+  // Horaires réels : [ouverture, fermeture] en minutes, index 0 = Lundi … 6 = Dimanche
+  var DAYS=['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
+  var HRS=[[630,1320],[630,1320],[630,1320],[630,1320],[630,1320],[630,1320],[630,1260]]; // 10:30–22:00, dim 10:30–21:00
+  function fmt(m){var h=Math.floor(m/60),mm=m%60;return h+':'+(mm<10?'0':'')+mm;}
+  var now=new Date();
+  var di=(now.getDay()+6)%7;            // Lundi=0
+  var cur=now.getHours()*60+now.getMinutes();
+  var open=HRS[di], isOpen=cur>=open[0]&&cur<open[1];
+
+  // Badge statut
+  var st=document.getElementById('status'), tx=document.getElementById('statusText');
+  if(isOpen){ st.className='status open'; tx.textContent='Ouvert maintenant · ferme à '+fmt(open[1]); }
+  else{
+    st.className='status closed';
+    if(cur<open[0]) tx.textContent='Fermé · ouvre à '+fmt(open[0]);
+    else{ var nd=(di+1)%7; tx.textContent='Fermé · ouvre '+(nd===di?'demain':DAYS[nd])+' à '+fmt(HRS[nd][0]); }
+  }
+
+  // Liste horaires + jour mis en avant
+  var box=document.getElementById('hours');
+  for(var i=0;i<7;i++){
+    var d=document.createElement('div'); d.className='h'+(i===di?' today':'');
+    d.innerHTML='<span>'+DAYS[i]+(i===di?' · aujourd’hui':'')+'</span><span>'+fmt(HRS[i][0])+' – '+fmt(HRS[i][1])+'</span>';
+    box.appendChild(d);
+  }
+})();
+</script>
+</body>
+</html>
