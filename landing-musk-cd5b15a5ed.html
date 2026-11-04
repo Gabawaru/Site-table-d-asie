@@ -60,9 +60,6 @@
   /* HÉRO */
   .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);
     background:radial-gradient(130% 120% at 50% -30%, rgba(227,176,72,.2), transparent 55%),linear-gradient(180deg,#fcf6e5,#f2e7c8)}
-  .hero::before,.hero::after{content:"福";position:absolute;font-family:'Ma Shan Zheng',cursive;color:rgba(178,30,21,.05);
-    font-size:230px;line-height:1;top:30px;pointer-events:none}
-  .hero::before{left:-40px}.hero::after{right:-40px;content:"味"}
   .hero .wrap{padding:44px 20px 36px;text-align:center;position:relative}
   .seal{width:60px;height:60px;margin:0 auto 14px;border-radius:50%;background:linear-gradient(145deg,var(--red),var(--red-deep));
     color:var(--gold-soft);display:flex;align-items:center;justify-content:center;font-family:'Ma Shan Zheng',cursive;font-size:34px;
@@ -98,16 +95,6 @@
   .sec-head .orn::before,.sec-head .orn::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--red),transparent);opacity:.4}
   .sec-head .orn i{width:6px;height:6px;border:1px solid var(--red);transform:rotate(45deg);opacity:.7}
   .sec-sub{text-align:center;color:var(--muted);font-size:13.5px;margin:-18px auto 26px;max-width:560px}
-
-  /* Spécialités */
-  .specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:14px}
-  .spec{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 16px;
-    box-shadow:var(--shadow);transition:.22s;overflow:hidden}
-  .spec::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),var(--gold))}
-  .spec:hover{transform:translateY(-4px);box-shadow:0 26px 50px -26px rgba(60,30,20,.55)}
-  .spec .n{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:20px}
-  .spec .d{font-size:13px;color:var(--muted);margin-top:3px}
-  .spec .tag{display:inline-block;margin-top:9px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:rgba(195,145,38,.16);color:var(--gold-ink)}
 
   /* ======= CARROUSEL « tous les plats + avis » ======= */
   .rail-sec{background:linear-gradient(180deg,var(--paper),var(--paper-2));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -214,18 +201,6 @@
     <div class="cell"><div class="big">7/7</div><div class="lbl">jours fériés inclus</div></div>
   </div>
 </div>
-
-<section class="wrap">
-  <div class="sec-head"><div class="zh">招 牌 菜</div><h2>Nos spécialités</h2><div class="orn"><i></i></div></div>
-  <div class="specs">
-    <div class="spec"><div class="n">Poulet Général Tao</div><div class="d">pané &amp; frit, sauce aigre-piquante</div><span class="tag">Signature</span></div>
-    <div class="spec"><div class="n">Canard laqué</div><div class="d">salade, concombre, coriandre</div><span class="tag">Signature</span></div>
-    <div class="spec"><div class="n">Bo bun bœuf</div><div class="d">citronnelle, vermicelles, herbes</div></div>
-    <div class="spec"><div class="n">Nems maison</div><div class="d">poulet ou porc, roulés main</div></div>
-    <div class="spec"><div class="n">Bœuf basilic piquant</div><div class="d">basilic thaï, piment, légumes</div></div>
-    <div class="spec"><div class="n">Crevette curry citronnelle</div><div class="d">curry doux, légumes croquants</div></div>
-  </div>
-</section>
 
 <!-- CARROUSEL : tous les plats + avis étoiles -->
 <section class="rail-sec">
