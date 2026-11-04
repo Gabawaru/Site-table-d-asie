@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>La Carte — Table d'Asie (brouillon)</title>
+<meta name="description" content="Carte complète Table d'Asie — entrées, salades, plats, accompagnements, desserts, boissons, vins & alcools. Page de travail non publique." />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23b21e15'/><text x='50' y='68' font-size='60' text-anchor='middle' fill='%23e0b048' font-family='serif'>菜</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f6efd9; --paper-2:#efe4c4; --ink:#241610; --ink-soft:#5a3e2b;
+    --red:#b21e15; --red-deep:#7c1410; --gold:#c39126; --gold-soft:#e0b048;
+    --jade:#2f6b46; --muted:#8a7256; --line:rgba(160,36,26,.22);
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  html,body{margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);line-height:1.5;
+    font-family:'Inter',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(rgba(90,62,43,.04) 1px,transparent 1.4px);background-size:12px 12px}
+  a{color:inherit;text-decoration:none}
+  .serif{font-family:'Cormorant Garamond',serif}
+  .brush{font-family:'Ma Shan Zheng',cursive}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  .draft-flag{position:fixed;z-index:60;top:0;left:0;background:#1c1c22;color:#ffd98a;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;padding:6px 12px;border-bottom-right-radius:8px}
+  .draft-flag b{color:#fff}
+
+  .bar{position:sticky;top:0;z-index:40;background:rgba(246,239,217,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .bar .row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 20px;max-width:var(--maxw);margin:0 auto}
+  .bar .back{display:inline-flex;align-items:center;gap:8px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--ink)}
+  .bar .back .mark{width:30px;height:30px;border-radius:6px;background:var(--red);color:var(--gold-soft);display:flex;align-items:center;justify-content:center;font-family:'Ma Shan Zheng',cursive;font-size:19px}
+  .bar .call{background:var(--red);color:#fff;padding:9px 16px;border-radius:999px;font-weight:600;font-size:14px}
+  .bar .call:hover{background:#c62418}
+
+  header.head{text-align:center;padding:40px 20px 10px}
+  header.head .zh{font-family:'Ma Shan Zheng',cursive;color:var(--red);font-size:clamp(28px,5vw,38px);line-height:1}
+  header.head h1{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:clamp(44px,8vw,72px);margin:4px 0 6px}
+  header.head p{color:var(--muted);font-size:13px;letter-spacing:.06em}
+
+  /* Filtres */
+  .filters{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;align-items:center;padding:14px 20px 0}
+  .filters .lbl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+  .chip{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:1px solid var(--line);
+    background:#fff;color:var(--ink-soft);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;cursor:pointer;transition:.15s}
+  .chip:hover{color:var(--red)}
+  .chip.active{color:#fff;background:var(--red);border-color:var(--red)}
+  .chip .zh{font-family:'Ma Shan Zheng',cursive;font-size:15px}
+  .searchwrap{position:relative;margin:14px auto 0;max-width:340px;padding:0 20px}
+  .searchwrap input{width:100%;background:#fff;border:1px solid var(--line);border-radius:999px;padding:11px 16px 11px 38px;font:inherit;font-size:14px;color:var(--ink);outline:none}
+  .searchwrap input:focus{border-color:var(--red)}
+  .searchwrap .ic{position:absolute;left:32px;top:11px;color:var(--red)}
+
+  /* Nav catégories collante */
+  .catnav{position:sticky;top:52px;z-index:30;background:rgba(246,239,217,.94);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);margin-top:16px}
+  .catnav .track{display:flex;gap:6px;overflow-x:auto;padding:10px 20px;max-width:var(--maxw);margin:0 auto;scrollbar-width:none}
+  .catnav .track::-webkit-scrollbar{display:none}
+  .catnav button{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:1px;padding:6px 12px;border-bottom:2px solid transparent;color:var(--ink);white-space:nowrap}
+  .catnav button .zh{font-family:'Ma Shan Zheng',cursive;color:var(--red);font-size:18px;line-height:1}
+  .catnav button .fr{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px}
+  .catnav button.active{border-bottom-color:var(--red);color:var(--red)}
+
+  main{padding:20px 0 60px}
+  .cat{margin:34px 0;scroll-margin-top:110px}
+  .cat-head{display:flex;align-items:flex-end;gap:14px;border-bottom:2px solid var(--red);padding-bottom:6px}
+  .cat-head .zh{font-family:'Ma Shan Zheng',cursive;color:var(--red);font-size:clamp(30px,5vw,42px);line-height:1}
+  .cat-head h2{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:clamp(26px,4vw,32px);margin:0}
+  .cat-head .sub{margin-left:auto;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-bottom:6px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px 40px;margin-top:20px}
+  .dish{display:grid;grid-template-columns:84px 1fr;gap:14px;align-items:start}
+  .thumb{width:84px;height:84px;position:relative;overflow:hidden;border:1px solid var(--line);border-radius:10px;background:var(--paper-2);flex:0 0 auto}
+  .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .thumb .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    background:repeating-linear-gradient(45deg,rgba(160,36,26,.06) 0 2px,transparent 2px 10px);color:rgba(160,36,26,.3);font-size:26px}
+  .thumb .corner{position:absolute;top:0;left:0;width:0;height:0;border-style:solid;border-width:10px 10px 0 0;border-color:var(--red) transparent transparent transparent;opacity:.7}
+  .d-main{min-width:0}
+  .d-top{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap}
+  .d-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:20px;color:var(--ink)}
+  .d-star{color:var(--gold);font-size:13px}
+  .d-spice{color:var(--red);font-size:11px;letter-spacing:1px}
+  .d-desc{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--ink-soft);font-size:14.5px;line-height:1.4;margin-top:2px}
+  .d-tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
+  .tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border-radius:3px;color:#fff}
+  .tag.halal{background:var(--jade)} .tag.gf{background:var(--gold);color:var(--ink)} .tag.veg{background:#6a8a3a}
+  .d-price{display:flex;align-items:center;margin-top:8px}
+  .d-price .ln{flex:1;border-bottom:2px dotted rgba(43,26,18,.25);margin-right:8px}
+  .price{font-family:'Cormorant Garamond',serif;font-weight:700;color:var(--red);white-space:nowrap;font-variant-numeric:tabular-nums}
+  .price .u{font-size:11px;color:var(--muted);font-weight:400;margin-left:5px}
+  .price .alt{font-size:11px;color:var(--muted);font-style:italic;margin-left:5px}
+
+  .empty{text-align:center;color:var(--muted);font-style:italic;font-family:'Cormorant Garamond',serif;font-size:18px;padding:50px 0}
+  .legend{margin-top:40px;padding-top:26px;border-top:1px dashed var(--line);text-align:center}
+  .legend .row{display:inline-flex;gap:20px;flex-wrap:wrap;justify-content:center;font-size:12px;color:var(--muted)}
+  .legend .note{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--ink-soft);max-width:640px;margin:16px auto 0;line-height:1.55}
+  .backcta{text-align:center;margin-top:30px}
+  .backcta a{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:11px 22px;color:var(--red);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px}
+  footer{background:var(--ink);color:rgba(246,239,217,.72);text-align:center;padding:30px 20px;margin-top:10px}
+  footer .zh{font-family:'Ma Shan Zheng',cursive;color:var(--gold-soft);font-size:20px}
+  @media (max-width:560px){ .dish{grid-template-columns:72px 1fr} .thumb{width:72px;height:72px} .catnav{top:52px} }
+  @media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="draft-flag"><b>BROUILLON</b> · carte · non public</div>
+
+<div class="bar">
+  <div class="row">
+    <a class="back" href="landing-musk-cd5b15a5ed.html"><span class="mark brush">福</span> <span>← Table d'Asie</span></a>
+    <a class="call" href="tel:+33988418678">☎ Appeler</a>
+  </div>
+</div>
+
+<header class="head">
+  <div class="zh">菜 单</div>
+  <h1>La Carte</h1>
+  <p>Prix par pièce ou par portion · sur place &amp; à emporter</p>
+</header>
+
+<div class="filters" id="filters"></div>
+<div class="searchwrap"><span class="ic">⌕</span><input id="search" type="search" placeholder="rechercher un plat…" aria-label="Rechercher un plat"></div>
+
+<nav class="catnav"><div class="track" id="catnav"></div></nav>
+
+<main class="wrap" id="menu"></main>
+
+<div class="wrap">
+  <div class="legend">
+    <div class="row">
+      <span><span style="color:var(--red)">◆</span> Épicé</span>
+      <span><span style="color:var(--gold)">✦</span> Spécialité maison</span>
+      <span><span class="tag halal" style="padding:2px 5px">حلال</span> Poulet halal uniquement</span>
+      <span><span class="tag gf" style="padding:2px 5px">SG</span> Sans gluten</span>
+    </div>
+    <p class="note">Tous nos plats sont préparés sur place, chaque jour. Seul le <strong>poulet</strong> est halal — les autres viandes ne le sont pas. Une allergie ? Dites-le nous, on adapte. Prix nets, service compris.</p>
+  </div>
+  <div class="backcta"><a href="landing-musk-cd5b15a5ed.html">← Retour à l'accueil</a></div>
+</div>
+
+<footer><div class="zh">谢 谢 光 临</div></footer>
+
+<script>
+/* ====== DONNÉES RÉELLES (extraites de la carte existante) ====== */
+const CATS = [
+{ id: 'entrees', fr: 'Entrées', sub: 'à la pièce', zh: '前菜', icon: '◉' },
+{ id: 'salades', fr: 'Salades', sub: 'la portion', zh: '沙拉', icon: '❀' },
+{ id: 'plats', fr: 'Plats chauds', sub: 'la portion', zh: '热菜', icon: '◈' },
+{ id: 'accompagnements', fr: 'Accompagnements', sub: 'la portion', zh: '配菜', icon: '≋' },
+{ id: 'desserts', fr: 'Desserts', sub: 'à la pièce ou à la portion', zh: '甜点', icon: '✿' },
+{ id: 'boissons', fr: 'Boissons', sub: 'sodas · jus · eaux', zh: '饮料', icon: '☕' },
+{ id: 'alcools', fr: 'Vins & alcools', sub: 'bières · vins · alcool de riz', zh: '酒水', icon: '⚱' }];
+
+const MENU = [
+// ===== Entrées =====
+{ id: 100, cat: 'entrees', name: "Gyoza", desc: "Ravioli japonais poêlé — porc, chou chinois, ciboule", price: 1.20, unit: 'pièce' },
+{ id: 101, cat: 'entrees', name: "Siu mai crevette", desc: "Ravioli vapeur — crevette, bambou, féculents, coriandre", price: 1.20, unit: 'pièce' },
+{ id: 102, cat: 'entrees', name: "Hakao crevette", desc: "Ravioli vapeur translucide — crevette, bambou, féculents", price: 1.20, unit: 'pièce' },
+{ id: 103, cat: 'entrees', name: "Petit nem poulet", desc: "Poulet, vermicelles soja, champignons noirs, oignon, carotte, pousses de soja", price: 1.40, unit: 'pièce', halal: true, img: 'images/r/compressed/nems-1.jpg' },
+{ id: 104, cat: 'entrees', name: "Petit nem porc", desc: "Porc, vermicelles soja, champignons noirs, oignon, carotte, pousses de soja", price: 1.40, unit: 'pièce', img: 'images/r/compressed/nems-2.jpg' },
+{ id: 105, cat: 'entrees', name: "Ravioli frit", desc: "Ravioli frit croustillant — porc, légumes", price: 1.40, unit: 'pièce' },
+{ id: 106, cat: 'entrees', name: "Pince de crabe", desc: "Pince de crabe farcie, panée et frite minute", price: 1.40, unit: 'pièce' },
+{ id: 107, cat: 'entrees', name: "Accra de crabe", desc: "Chair de crabe, petits pois, oignon, carotte, lait, farine de blé", price: 1.50, unit: 'pièce' },
+{ id: 108, cat: 'entrees', name: "Crevette panée", desc: "Crevette enrobée d'une pâte croquante, frite minute", price: 1.50, unit: 'pièce' },
+{ id: 109, cat: 'entrees', name: "Beignet de crevette", desc: "Crevette, farine de blé et de riz, fécule de pomme de terre", price: 1.50, unit: 'pièce' },
+{ id: 110, cat: 'entrees', name: "Nem légumes", desc: "Feuille de brick, chou blanc, champignons noirs, carotte, vermicelles, pousses de soja", price: 1.90, unit: 'pièce', veg: true, img: 'images/r/compressed/nems-4.jpg' },
+{ id: 111, cat: 'entrees', name: "Nem crevette", desc: "Galette de riz, crevette, poulet, champignons noirs, vermicelles, pousses de soja", price: 1.90, unit: 'pièce', img: 'images/r/compressed/nems-3.jpg' },
+{ id: 112, cat: 'entrees', name: "Samoussa bœuf", desc: "Feuille de brick, bœuf, petits pois, pomme de terre, curry", price: 2.20, unit: 'pièce' },
+{ id: 113, cat: 'entrees', name: "Samoussa poulet", desc: "Feuille de brick, poulet, petits pois, pomme de terre, curry", price: 2.20, unit: 'pièce', halal: true },
+{ id: 114, cat: 'entrees', name: "Rouleau de printemps", desc: "Galette de riz, crevette, vermicelles, salade, menthe, coriandre, ciboulette", price: 3.20, unit: 'pièce', gf: true, img: 'images/r/compressed/rouleaux.jpg' },
+{ id: 115, cat: 'entrees', name: "Banh bao", desc: "Brioche vapeur farcie au porc, chou blanc, ciboulette, échalote", price: 3.90, unit: 'pièce' },
+{ id: 116, cat: 'entrees', name: "Yakitori poulet", desc: "Brochettes de poulet marinées, sauce soja-caramel, grillées", price: 4.20, unit: '4 pièces', halal: true, img: 'images/r/compressed/yakitori.jpg' },
+{ id: 117, cat: 'entrees', name: "Crabe farci", desc: "Carapace farcie au crabe, porc, crevette, vermicelles, fécule", price: 5.90, unit: 'pièce' },
+{ id: 118, cat: 'entrees', name: "Brochette poulet citronnelle", desc: "Poulet mariné citronnelle, feuilles de citron, curcuma, ail", price: 6.30, unit: 'pièce', halal: true, gf: true },
+
+// ===== Salades =====
+{ id: 200, cat: 'salades', name: "Salade composée", desc: "Carotte, chou blanc, poivron, oignon blanc, sauce vinaigrette", price: 5.00, unit: 'portion', veg: true },
+{ id: 201, cat: 'salades', name: "Salade poulet", desc: "Pousses de soja, salade, carotte, concombre, tomate, poulet, vinaigrette", price: 5.90, unit: 'portion', halal: true },
+{ id: 202, cat: 'salades', name: "Salade crevette", desc: "Pousses de soja, salade, carotte, concombre, tomate, crevette, vinaigrette", price: 6.50, unit: 'portion' },
+
+// ===== Plats chauds =====
+{ id: 300, cat: 'plats', name: "Poulet aux champignons noirs", desc: "Poulet sauté, champignons noirs, pousses de bambou, petits pois", price: 6.90, unit: 'portion', halal: true, img: 'images/r/compressed/poulet-champignons.jpg' },
+{ id: 301, cat: 'plats', name: "Poulet piquant", desc: "Poulet sauté, cacahuète, poivron, carotte, bambou, céleri, oignon", price: 6.90, unit: 'portion', halal: true, hot: 2 },
+{ id: 302, cat: 'plats', name: "Poulet caramel", desc: "Poulet mijoté au caramel, carotte, pousses de bambou", price: 6.90, unit: 'portion', halal: true },
+{ id: 303, cat: 'plats', name: "Porc caramel", desc: "Porc mijoté au caramel, carotte, pousses de bambou", price: 6.90, unit: 'portion' },
+{ id: 304, cat: 'plats', name: "Poulet curry à la citronnelle", desc: "Poulet, curry, citronnelle, poivron, oignon, bambou, carotte, courgette", price: 6.90, unit: 'portion', halal: true },
+{ id: 305, cat: 'plats', name: "Poulet Général Tao", desc: "Émincé de poulet pané et frit, sauce aigre-piquante, poivron, oignon, coriandre", price: 7.90, unit: 'portion', halal: true, signature: true, img: 'images/r/compressed/regal-poulet.jpg' },
+{ id: 306, cat: 'plats', name: "Bœuf basilic piquant", desc: "Bœuf sauté, basilic thaï, piment, bambou, petits pois, oignon, carotte, courgette", price: 7.90, unit: 'portion', hot: 2, img: 'images/r/compressed/boeuf-piquant.jpg' },
+{ id: 307, cat: 'plats', name: "Bœuf aux champignons noirs", desc: "Bœuf sauté, champignons noirs, pousses de bambou", price: 7.90, unit: 'portion' },
+{ id: 308, cat: 'plats', name: "Bœuf aux oignons", desc: "Bœuf sauté au wok, oignons doux, gingembre, sauce d'huître", price: 7.90, unit: 'portion', img: 'images/r/compressed/boeuf-oignons.jpg' },
+{ id: 309, cat: 'plats', name: "Bo bun bœuf", desc: "Bœuf sauté à la citronnelle, vermicelles de riz, carotte, concombre, herbes fraîches", price: 8.50, unit: 'portion', gf: true, img: 'images/r/compressed/bo-bun.jpg' },
+{ id: 310, cat: 'plats', name: "Bo bun bœuf & 2 petits nems", desc: "Notre Bo bun classique avec deux petits nems croustillants", price: 10.50, unit: 'portion' },
+{ id: 311, cat: 'plats', name: "Poisson aigre-doux", desc: "Filet de poisson pané, sauce aigre-douce, ananas, poivron, oignon", price: 8.50, unit: 'portion' },
+{ id: 312, cat: 'plats', name: "Crevette piquante", desc: "Crevettes sautées, poivron, oignon, carotte, bambou, petits pois", price: 8.50, unit: 'portion', hot: 2, gf: true, img: 'images/r/compressed/crevettes-piquantes.jpg' },
+{ id: 313, cat: 'plats', name: "Crevette curry à la citronnelle", desc: "Crevettes mijotées au curry, citronnelle, poivron, bambou, carotte, courgette", price: 8.50, unit: 'portion', gf: true, img: 'images/r/compressed/crevettes-curry.jpg' },
+{ id: 314, cat: 'plats', name: "Canard laqué", desc: "Canard laqué, salade, concombre, pousses de soja, coriandre", price: 8.50, unit: 'portion', signature: true },
+
+// ===== Accompagnements =====
+{ id: 400, cat: 'accompagnements', name: "Riz blanc", desc: "Riz thaï parfumé, cuit vapeur", price: 2.50, unit: 'portion', veg: true, gf: true },
+{ id: 401, cat: 'accompagnements', name: "Riz cantonais", desc: "Riz sauté, œufs, petits pois, jambon, cébette", price: 4.20, unit: 'portion', img: 'images/r/compressed/riz-cantonais.jpg' },
+{ id: 402, cat: 'accompagnements', name: "Riz thaï piquant", desc: "Riz sauté, œufs, cébette, poulet laqué, sauce piment", price: 4.20, unit: 'portion', halal: true, hot: 1 },
+{ id: 403, cat: 'accompagnements', name: "Riz Singapour", desc: "Riz sauté, carotte, maïs, petits pois, oignon frit, crevettes", price: 4.20, unit: 'portion' },
+{ id: 404, cat: 'accompagnements', name: "Pâtes de riz sautées", desc: "Tagliatelles de riz sautées au chou blanc", price: 4.90, unit: 'portion', veg: true, img: 'images/r/compressed/pates-riz.jpg' },
+{ id: 405, cat: 'accompagnements', name: "Nouilles sautées", desc: "Nouilles aux œufs sautées, pousses de soja, cébette", price: 4.90, unit: 'portion', veg: true, img: 'images/r/compressed/nouilles-sautees.jpg' },
+{ id: 406, cat: 'accompagnements', name: "Vermicelles sautés", desc: "Vermicelles de soja sautés aux légumes", price: 4.90, unit: 'portion', veg: true },
+{ id: 407, cat: 'accompagnements', name: "Vermicelles au poulet", desc: "Vermicelles de soja, champignons noirs, poulet, petits pois", price: 5.90, unit: 'portion', halal: true },
+{ id: 408, cat: 'accompagnements', name: "Légumes sautés", desc: "Poivron, carotte, oignon, courgette, céleri, brocoli, bambou", price: 5.90, unit: 'portion', veg: true, gf: true, img: 'images/r/compressed/legumes.jpg' },
+
+// ===== Desserts =====
+{ id: 500, cat: 'desserts', name: "Banane au lait de coco", desc: "Banane mijotée dans lait de coco sucré, sagou, vanille", price: 3.50, unit: 'portion', veg: true, gf: true },
+{ id: 501, cat: 'desserts', name: "Boule de neige", desc: "Boules de riz gluant, noix de coco râpée, cœur fondant", price: 3.50, unit: 'portion', veg: true },
+{ id: 502, cat: 'desserts', name: "Salade de fruits", desc: "Fruits frais de saison, sirop léger", price: 3.90, unit: 'portion', veg: true, gf: true },
+{ id: 503, cat: 'desserts', name: "Nougat mou", desc: "Nougat tendre — cacahuète, sésame", price: 2.50, unit: 'portion', veg: true },
+{ id: 504, cat: 'desserts', name: "Nougat dur", desc: "Nougat croquant — cacahuète, sésame", price: 2.50, unit: 'portion', veg: true },
+{ id: 505, cat: 'desserts', name: "Coco confit", desc: "Lamelles de noix de coco confites", price: 3.50, unit: 'portion', veg: true, gf: true },
+{ id: 506, cat: 'desserts', name: "Gingembre confit", desc: "Lamelles de gingembre confites", price: 3.50, unit: 'portion', veg: true, gf: true },
+{ id: 507, cat: 'desserts', name: "Kumquats confits", desc: "Petits agrumes confits, doux et parfumés", price: 3.50, unit: 'portion', veg: true, gf: true },
+{ id: 508, cat: 'desserts', name: "Assortiment de douceurs", desc: "Mélange de gâteaux et confiseries maison", price: 3.50, unit: 'portion', veg: true },
+{ id: 509, cat: 'desserts', name: "Gâteau pâte de soja", desc: "Pâtisserie traditionnelle à base de pâte de soja", price: 2.00, unit: 'pièce', alt: '3,50 € / 2 pces', veg: true },
+{ id: 510, cat: 'desserts', name: "Gâteau à la noix de coco", desc: "Pâtisserie traditionnelle à la noix de coco", price: 2.00, unit: 'pièce', alt: '3,50 € / 2 pces', veg: true },
+{ id: 511, cat: 'desserts', name: "Rouleau de gâteau soja", desc: "Rouleau de pâtisserie au soja, à partager", price: 6.50, unit: 'rouleau de 4', veg: true },
+{ id: 512, cat: 'desserts', name: "Rouleau de gâteau coco", desc: "Rouleau de pâtisserie à la noix de coco, à partager", price: 7.50, unit: 'rouleau de 5', veg: true },
+{ id: 513, cat: 'desserts', name: "Lychee au sirop", desc: "Litchis servis bien frais dans leur sirop léger", price: 2.50, unit: 'portion', veg: true, gf: true },
+{ id: 514, cat: 'desserts', name: "Biscuit porte-bonheur", desc: "Biscuit croustillant renfermant un petit message", price: 0.50, unit: 'pièce', veg: true },
+
+// ===== Boissons =====
+{ id: 600, cat: 'boissons', name: "Eau Cristaline", desc: "Eau plate, 50 cl", price: 2.00, unit: 'bouteille', veg: true, gf: true },
+{ id: 601, cat: 'boissons', name: "Eau pétillante San Pellegrino", desc: "Eau gazeuse italienne, 50 cl", price: 2.50, unit: 'bouteille', veg: true, gf: true },
+{ id: 602, cat: 'boissons', name: "Coca-Cola", price: 2.50, unit: '33 cl', veg: true, gf: true },
+{ id: 603, cat: 'boissons', name: "Coca-Cola Cerise", price: 2.50, unit: '33 cl', veg: true, gf: true },
+{ id: 604, cat: 'boissons', name: "Coca-Cola Zéro", price: 2.50, unit: '33 cl', veg: true, gf: true },
+{ id: 605, cat: 'boissons', name: "Ice Tea Lipton", price: 2.50, unit: '33 cl', veg: true, gf: true },
+{ id: 606, cat: 'boissons', name: "Ice Tea Liptonic", price: 2.50, unit: '33 cl', veg: true, gf: true },
+{ id: 607, cat: 'boissons', name: "Fanta Orange", price: 2.50, unit: '33 cl', veg: true, gf: true },
+{ id: 608, cat: 'boissons', name: "Oasis Tropical", price: 2.50, unit: '33 cl', veg: true, gf: true },
+{ id: 609, cat: 'boissons', name: "Orangina", price: 2.50, unit: '33 cl', veg: true, gf: true },
+{ id: 610, cat: 'boissons', name: "Sprite", price: 2.50, unit: '33 cl', veg: true, gf: true },
+{ id: 611, cat: 'boissons', name: "Jus de lychee", price: 2.90, unit: 'verre', veg: true, gf: true },
+{ id: 612, cat: 'boissons', name: "Jus de mangue", price: 2.90, unit: 'verre', veg: true, gf: true },
+{ id: 613, cat: 'boissons', name: "Jus de goyave", price: 2.90, unit: 'verre', veg: true, gf: true },
+{ id: 614, cat: 'boissons', name: "Jus de passion", price: 2.90, unit: 'verre', veg: true, gf: true },
+{ id: 615, cat: 'boissons', name: "Jus d'ananas", price: 2.90, unit: 'verre', veg: true, gf: true },
+{ id: 616, cat: 'boissons', name: "Jus de coco", price: 2.90, unit: 'verre', veg: true, gf: true },
+{ id: 617, cat: 'boissons', name: "Lait de soja", price: 2.90, unit: 'verre', veg: true, gf: true },
+
+// ===== Vins & alcools =====
+{ id: 700, cat: 'alcools', name: "Bière Heineken", desc: "Pils blonde, 33 cl", price: 2.90, unit: 'bouteille' },
+{ id: 702, cat: 'alcools', name: "Bière Tsingtao", desc: "Blonde chinoise, 33 cl", price: 3.50, unit: 'bouteille' },
+{ id: 703, cat: 'alcools', name: "Vin Ventoux Rouge", desc: "Côtes-du-Ventoux — bouteille 75 cl", price: 14.00, unit: '75 cl', alt: '8,90 € / 37,5 cl' },
+{ id: 704, cat: 'alcools', name: "Vin Ventoux Rosé", desc: "Côtes-du-Ventoux — bouteille 75 cl", price: 14.00, unit: '75 cl', alt: '8,90 € / 37,5 cl' },
+{ id: 705, cat: 'alcools', name: "Vin en carafe", desc: "Rouge ou rosé — carafe maison", price: 2.90, unit: '1/4' },
+{ id: 706, cat: 'alcools', name: "Alcool de riz chinois", desc: "Eau-de-vie de riz chinoise, servie en petite bouteille", price: 4.50, unit: 'petite bouteille' }];
+
+const FILTERS = [
+{ id: 'all', label: 'Tout voir', zh: null },
+{ id: 'halal', label: 'Halal', zh: 'حلال' },
+{ id: 'gf', label: 'Sans gluten', zh: null },
+{ id: 'veg', label: 'Végétarien', zh: '素' }];
+
+
+
+/* ====== RENDU STATIQUE ====== */
+(function(){
+  "use strict";
+  var state={filter:'all', q:''};
+  var menuEl=document.getElementById('menu');
+  var navEl=document.getElementById('catnav');
+  var filtersEl=document.getElementById('filters');
+  var refs={};
+
+  // Filtres
+  var fl=document.createElement('span'); fl.className='lbl'; fl.textContent='Filtrer :'; filtersEl.appendChild(fl);
+  FILTERS.forEach(function(f){
+    var b=document.createElement('button'); b.className='chip'+(f.id==='all'?' active':'');
+    b.innerHTML=(f.zh?'<span class="zh">'+f.zh+'</span>':'')+f.label;
+    b.onclick=function(){ state.filter=f.id; [].forEach.call(filtersEl.querySelectorAll('.chip'),function(c){c.classList.remove('active');}); b.classList.add('active'); render(); };
+    filtersEl.appendChild(b);
+  });
+  document.getElementById('search').addEventListener('input', function(e){ state.q=e.target.value.toLowerCase().trim(); render(); });
+
+  function priceHTML(m){
+    if(m.price==null) return '<span class="price" style="font-style:italic;color:var(--muted)">nous consulter</span>';
+    var p=m.price.toFixed(2).replace('.',',');
+    return '<span class="price">'+p+' €<span class="u">/ '+m.unit+'</span>'+(m.alt?'<span class="alt">· '+m.alt+'</span>':'')+'</span>';
+  }
+  function dishHTML(m){
+    var tags='';
+    if(m.halal) tags+='<span class="tag halal">حلال Halal</span>';
+    if(m.gf) tags+='<span class="tag gf">Sans gluten</span>';
+    if(m.veg) tags+='<span class="tag veg">Végé</span>';
+    var spice=m.hot?'<span class="d-spice" title="Épicé">'+Array(m.hot+1).join('◆')+'</span>':'';
+    var star=m.signature?'<span class="d-star" title="Spécialité maison">✦</span>':'';
+    var thumb='<div class="thumb"><span class="corner"></span>'+
+      (m.img?'<img src="'+m.img+'" alt="'+m.name+'" loading="lazy" decoding="async" onerror="this.remove()">':'')+
+      '<span class="ph">✿</span></div>';
+    return '<div class="dish">'+thumb+
+      '<div class="d-main"><div class="d-top"><span class="d-name">'+m.name+'</span>'+star+spice+'</div>'+
+      (m.desc?'<div class="d-desc">'+m.desc+'</div>':'')+
+      (tags?'<div class="d-tags">'+tags+'</div>':'')+
+      '<div class="d-price"><span class="ln"></span>'+priceHTML(m)+'</div></div></div>';
+  }
+  function match(m){
+    if(state.filter==='halal'&&!m.halal) return false;
+    if(state.filter==='gf'&&!m.gf) return false;
+    if(state.filter==='veg'&&!m.veg) return false;
+    if(state.q&&m.name.toLowerCase().indexOf(state.q)===-1) return false;
+    return true;
+  }
+  function render(){
+    menuEl.innerHTML=''; refs={};
+    var any=false;
+    CATS.forEach(function(c){
+      var items=MENU.filter(function(m){return m.cat===c.id && match(m);});
+      if(!items.length) return;
+      any=true;
+      var sec=document.createElement('section'); sec.className='cat'; sec.id='cat-'+c.id; refs[c.id]=sec;
+      sec.innerHTML='<div class="cat-head"><span class="zh">'+c.zh+'</span><h2>'+c.fr+'</h2><span class="sub">'+c.sub+'</span></div>'+
+        '<div class="grid">'+items.map(dishHTML).join('')+'</div>';
+      menuEl.appendChild(sec);
+    });
+    if(!any) menuEl.innerHTML='<div class="empty">Aucun plat ne correspond à ce filtre.</div>';
+    buildNav();
+  }
+  function buildNav(){
+    navEl.innerHTML='';
+    CATS.forEach(function(c){
+      if(!refs[c.id]) return;
+      var b=document.createElement('button'); b.dataset.cat=c.id;
+      b.innerHTML='<span class="zh">'+c.zh+'</span><span class="fr">'+c.fr+'</span>';
+      b.onclick=function(){ var el=refs[c.id]; if(el) window.scrollTo({top:el.offsetTop-104, behavior:'smooth'}); };
+      navEl.appendChild(b);
+    });
+  }
+  // surlignage de la catégorie active au scroll
+  window.addEventListener('scroll', function(){
+    var y=window.scrollY+130, cur=null;
+    CATS.forEach(function(c){ var el=refs[c.id]; if(el && el.offsetTop<=y) cur=c.id; });
+    [].forEach.call(navEl.children,function(b){ b.classList.toggle('active', b.dataset.cat===cur); });
+  }, {passive:true});
+
+  render();
+})();
+</script>
+</body>
+</html>
